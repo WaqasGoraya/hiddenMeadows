@@ -92,18 +92,19 @@ $sprwine = new WP_Query($sprparams);
             <div class="col-md82">
                 <nav class="filter-nav">
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                        <button class="nav-link wine_title active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="true">All Wines</button>
-                        <button class="nav-link wine_title" id="nav-red-tab" data-bs-toggle="tab" data-bs-target="#nav-red" type="button" role="tab" aria-controls="nav-red" aria-selected="false">Red Wine</button>
-                        <button class="nav-link wine_title" id="nav-rose-tab" data-bs-toggle="tab" data-bs-target="#nav-rose" type="button" role="tab" aria-controls="nav-rose" aria-selected="false">Rose Wine</button>
-                        <button class="nav-link wine_title" id="nav-white-tab" data-bs-toggle="tab" data-bs-target="#nav-white" type="button" role="tab" aria-controls="nav-white" aria-selected="false">White Wine</button>
-                        <button class="nav-link wine_title" id="nav-sparkling-tab" data-bs-toggle="tab" data-bs-target="#nav-sparkling" type="button" role="tab" aria-controls="nav-sparkling" aria-selected="false">Sparkling Wine</button>
+                        <button onclick="setAttr('all')" class="nav-link wine_title active" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="true">All Wines</button>
+                        <button onclick="setAttr('red')" class="nav-link wine_title" id="nav-red-tab" data-bs-toggle="tab" data-bs-target="#nav-red" type="button" role="tab" aria-controls="nav-red" aria-selected="false">Red Wine</button>
+                        <button onclick="setAttr('rose')" class="nav-link wine_title" id="nav-rose-tab" data-bs-toggle="tab" data-bs-target="#nav-rose" type="button" role="tab" aria-controls="nav-rose" aria-selected="false">Rose Wine</button>
+                        <button onclick="setAttr('white')" class="nav-link wine_title" id="nav-white-tab" data-bs-toggle="tab" data-bs-target="#nav-white" type="button" role="tab" aria-controls="nav-white" aria-selected="false">White Wine</button>
+                        <button onclick="setAttr('sparkling')" class="nav-link wine_title" id="nav-sparkling-tab" data-bs-toggle="tab" data-bs-target="#nav-sparkling" type="button" role="tab" aria-controls="nav-sparkling" aria-selected="false">Sparkling Wine</button>
                     </div>
                 </nav>
                 <h2 class="filter-title">all wines</h2>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <form action="#">
+                    <form  id="searchFrom">
                         <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Search">
+                            <input type="hidden" id="search_cat"  name="search_cat" value="all">
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Search" data-cat="" required>
                             <button type="submit" class="btn btn-search">
                                 <i class="fa fa-search"></i>
                             </button>
@@ -144,8 +145,12 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;
-                            endif; ?>
+                            <?php endforeach; ?>
+                            <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                         </div>
                         <?php if ($p_count->publish > 8) : ?>
                         <div class="row">
@@ -341,4 +346,10 @@ $sprwine = new WP_Query($sprparams);
     </div>
 </section>
 <!-------------------------------- Products End ------------------------------------>
+
+<script>
+    function setAttr(arg){
+     jQuery('#search_cat').val(arg);
+    }
+</script>
 <?php get_footer(); ?>

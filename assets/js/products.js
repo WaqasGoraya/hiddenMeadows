@@ -159,3 +159,82 @@ jQuery('#load_more_sprwine').on('click', function () {
     });
 
 });
+
+let currentPageSearch = 1;
+
+jQuery('#searchFrom').on('submit', function (e) {
+
+    e.preventDefault();
+    var search = jQuery('#search').val();
+    var cat = jQuery('#search_cat').val();
+
+    jQuery.ajax({
+        type: 'POST',
+        url: my_ajax_object.ajaxurl,
+        dataType: 'json',
+        data: {
+            action: 'search_products',
+            search: search,
+            cat: cat,
+            offset: currentPageSearch * 4,
+        },
+        beforeSend: function () {
+            jQuery(".loader").css("visibility", "visible");
+            if (cat === 'all') {
+                jQuery('#products_list').html('');
+            }
+            if (cat === 'red') {
+                jQuery('#redwine_list').html('');
+            }
+            if (cat === 'rose') {
+                jQuery('#rosewine_list').html('');
+            }
+            if (cat === 'white') {
+                jQuery('#whitewine_list').html('');
+            }
+            if (cat === 'sparkling') {
+                jQuery('#sprwine_list').html('');
+            }
+        },
+        complete: function () {
+            jQuery(".loader").css("visibility", "hidden");
+        },
+        success: function (res) {
+
+            if (res.cat === "all") {
+                if (currentPageSearch * 4 >= res.max) {
+                    jQuery('#load_more_products').hide();
+                }
+                jQuery('#products_list').append(res.html);
+            }
+            if (res.cat === "red") {
+                if (currentPageSearch * 4 >= res.max) {
+                    jQuery('#load_more_redwine').hide();
+                }
+                jQuery('#redwine_list').append(res.html);
+            }
+            if (res.cat === "rose") {
+                if (currentPageSearch * 4 >= res.max) {
+                    jQuery('#load_more_rosewine').hide();
+                }
+                jQuery('#rosewine_list').append(res.html);
+            }
+            if (res.cat === "white") {
+                if (currentPageSearch * 4 >= res.max) {
+                    jQuery('#load_more_whitewine').hide();
+                }
+                jQuery('#whitewine_list').append(res.html);
+            }
+            if (res.cat === "sparkling") {
+                if (currentPageSearch * 4 >= res.max) {
+                    jQuery('#load_more_sprwine').hide();
+                }
+                jQuery('#sprwine_list').append(res.html);
+            }
+
+        }
+
+    });
+
+
+})
