@@ -1,0 +1,220 @@
+/*
+Theme Name: Hidden Meadows
+Theme URI: https://wordpress.org/themes/twentytwenty/
+Author: LEADconcept WordPress team
+Author URI: https://leadconcept.com/
+Description: friendly e-commerce website specifically aimed at selling bottled wine directly to consumers. The objective is to offer a streamlined, simple, and effective online shopping experience.
+Tags: blog, one-column, custom-background, custom-colors, custom-logo, custom-menu, editor-style, featured-images, footer-widgets, full-width-template, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready, block-styles, wide-blocks, accessibility-ready
+Version: 1.0
+Requires at least: 6.0
+Tested up to: 6.4
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: hiddenmeadows
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
+
+@media (min-width: 992px) {
+  .navbar-expand-lg #menu-main-menu {
+    flex-direction: row;
+  }
+}
+#menu-main-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+#menu-main-menu .nav-item a {
+  text-decoration: none;
+}
+
+#menu-item-42 {
+  position: relative;
+}
+#menu-item-42 a {
+  height: auto;
+  max-width: 24px;
+}
+#menu-item-42 .cart-count {
+  position: absolute;
+  top: -5px;
+  right: 0;
+  background: #000;
+  width: 18px;
+  height: 18px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 12px;
+}
+#menu-item-43 a {
+  position: relative;
+  height: auto;
+  max-width: 24px;
+}
+#menu-item-42 img {
+  position: relative;
+  height: auto;
+  max-width: 24px;
+}
+#menu-item-43 img {
+  position: relative;
+  height: auto;
+  max-width: 24px;
+}
+#menu-main-menu .current-menu-item {
+  background-color: #631a1c;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 4px;
+}
+#menu-main-menu .current-menu-item a {
+  padding: 0;
+}
+.navbar-expand-lg .navbar-nav a {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+.footer-sec .secondarylinks #menu-footer-menu {
+  align-items: center;
+  padding-left: 0;
+  justify-content: center;
+  gap: 10px;
+  display: flex;
+  margin-bottom: 0;
+  flex-wrap: wrap;
+}
+.footer-sec .secondarylinks #menu-footer-menu li {
+  list-style-type: none;
+  margin: 0;
+  padding-right: 10px;
+  border-right: 1px solid #fff;
+}
+@media screen and (min-width: 992px) {
+  .footer-sec .secondarylinks #menu-footer-menu {
+    gap: 24px;
+  }
+  .footer-sec .secondarylinks #menu-footer-menu li {
+    padding-right: 24px;
+  }
+  .footer-sec .secondarylinks #menu-footer-menu li:last-of-type {
+    padding-right: 0;
+  }
+}
+.footer-sec .secondarylinks #menu-footer-menu li:last-of-type {
+  border-right: none;
+}
+.footer-sec .secondarylinks #menu-footer-menu a {
+  color: #fff;
+  font-family: "Montserrat";
+  font-size: 14px;
+  text-decoration: none;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  margin: 0;
+  display: block;
+}
+
+#menu-main-menu #menu-item-75 {
+  position: relative;
+}
+
+#menu-main-menu #menu-item-75 a {
+  padding-right: 0;
+}
+
+#menu-main-menu #menu-item-75::after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+  color: #fff;
+}
+
+#menu-main-menu #menu-item-75 .sub-menu {
+  display: none;
+  transition: all 0.3s ease-in-out;
+}
+
+#menu-main-menu #menu-item-75 .sub-menu .menu-item {
+  border-bottom: 1px solid #bcbcbc;
+  padding: 8px 0;
+}
+
+#menu-main-menu #menu-item-75 .sub-menu .menu-item a {
+  color: #631a1c !important;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  padding: 0;
+  display: inline-block;
+}
+
+#menu-main-menu #menu-item-75:hover .sub-menu {
+  position: absolute;
+  z-index: 1000;
+  display: block;
+  min-width: 10rem;
+  padding: 0 5px;
+  margin: 0;
+  background: #fff;
+  font-size: 1rem;
+  list-style: none;
+}
+.footer-social-links .widget {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+#menu-item-42.current-menu-item,
+#menu-item-43.current-menu-item,
+#menu-item-74.current-menu-item,
+#menu-item-75.current-menu-item,
+#menu-item-57.current-menu-item,
+#menu-item-58.current-menu-item,
+#menu-item-59.current-menu-item,
+#menu-item-60.current-menu-item {
+  background: none;
+  color: white;
+  padding: 5px;
+}
+.single-blog-main-sec .img-blog {
+  max-height: 450px;
+  width: 100%;
+  object-fit: cover;
+}
+.error {
+  color: white;
+  padding: 1px 1px;
+  background-color: #631a1c;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(99, 26, 28, 0.3);
+  visibility: hidden;
+}
