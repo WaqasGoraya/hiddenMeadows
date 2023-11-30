@@ -16,6 +16,9 @@ add_action('wp_ajax_nopriv_load_more_whitewine', 'load_more_whitewine');
 add_action('wp_ajax_load_more_sprwine', 'load_more_sprwine');
 add_action('wp_ajax_nopriv_load_more_sprwine', 'load_more_sprwine');
 
+add_action('wp_ajax_search_products', 'search_products');
+add_action('wp_ajax_nopriv_search_products', 'search_products');
+
 
 
 function load_more_products()
@@ -395,5 +398,115 @@ function load_more_sprwine()
 
     echo json_encode($result);
 
+    wp_die();
+}
+
+
+function search_products()
+{
+
+    $offset = $_POST["offset"];
+    $search = $_POST["search"];
+    $cat = $_POST["cat"];
+
+    if ($cat == "red") {
+        $Arr =  array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => 'sparkling-wine',
+            'operator' => 'IN',
+        );
+    }
+    if ($cat == "rose") {
+        $Arr = array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => 'rose-wine',
+            'operator' => 'IN',
+        );
+    }
+    if ($cat == "white") {
+        $Arr =  array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => 'white-wine',
+            'operator' => 'IN',
+        );
+    }
+    if ($cat == "sparkling") {
+        $Arr =  array(
+            'taxonomy' => 'product_cat',
+            'field' => 'slug',
+            'terms' => 'sparkling-wine',
+            'operator' => 'IN',
+        );
+    }
+
+    $products_args = array(
+        'posts_per_page' => 4,
+        'post_type' => 'product',
+        'post_status' => 'publish',
+        'orderby' => 'title',
+        'order' => 'ASC',
+        's' => $search,
+        'offset' => $offset,
+        'tax_query' =>  array(
+            'relation' => 'OR',
+            $Arr
+        ),
+    );
+
+
+    $products_query = new WP_Query($products_args);
+    $response = '';
+
+    $count = wp_count_posts($post_type = 'product');
+
+    if ($products_query->have_posts()) {
+
+        ob_start();
+
+        foreach ($products_query->posts as $key => $product) {
+
+            $product_img = wp_get_attachment_url(get_post_thumbnail_id($product->ID));
+
+            $product_meta = get_post_meta($product->ID);
+
+            $response .= ' <div class="col-md-4 col-lg-3">
+                            <div class="card">
+                                <div class="img-box">
+                                    <a href="#" class="btn btn-cart">
+                                        <img src="' . get_template_directory_uri() . '/assets/images/cart.png" alt="cart" class="img-cart">
+                                        Add to Cart
+                                    </a>
+                                    <img src="' . $product_img . '" alt="product" class="card-img-top">
+                                </div>
+                                <a href="' . get_permalink($product->ID) . '">
+                                    <div class="card-body text-center">
+                                        <h3 class="card-title">' . $product->post_title . '</h3>';
+            if (isset($product_meta['producer_id'])) {
+                $response .=  '<p class="card-text">' . $product_meta['producer_id'][0] . '</p>';
+            } else {
+                $response .= '<p class="card-text">Nuvole</p>';
+            }
+
+            $response .=  '</div>
+                        </a>
+                    </div>
+                </div>';
+            ob_end_clean();
+        }
+    } else {
+        $response = '';
+    }
+    // return $response;
+
+    $result = [
+        'max' => $count->publish,
+        'html' => $response,
+        'cat' => $cat
+    ];
+
+    echo json_encode($result);
     wp_die();
 }
