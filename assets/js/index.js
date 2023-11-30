@@ -85,7 +85,7 @@ jQuery(".wine_title").on("click", function () {
 	--------------------- */
 jQuery(".qtybtn").on("click", function () {
   var button = jQuery(this);
-  var oldValue = jQuery(".number").html();
+  var oldValue = jQuery(".qty_total").html();
   if (button.hasClass("inc")) {
     var newVal = parseFloat(oldValue) + 1;
   } else {
@@ -96,5 +96,5 @@ jQuery(".qtybtn").on("click", function () {
       newVal = 0;
     }
   }
-  jQuery(".number").html(newVal);
+  jQuery(".qty_total").html(newVal);
 });
