@@ -3,7 +3,7 @@
 get_header();
 ?>
 <!-------------------------------- Cart Start ------------------------------------>
-<section class="section-cart">
+<!-- <section class="section-cart">
     <div class="container">
         <div class="row mb-4">
             <div class="col-md-12">
@@ -199,6 +199,7 @@ get_header();
             </div>
         </div>
     </div>
-</section>
+</section> -->
+<?= do_shortcode('[woocommerce_cart]'); ?>
 <!-------------------------------- Cart End ------------------------------------>
 <?php get_footer(); ?>

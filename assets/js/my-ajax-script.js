@@ -129,3 +129,37 @@ jQuery("#load_more_blog").on("click", function () {
     },
   });
 });
+
+//Single product cart script
+jQuery("#single_cart").on("click", function () {
+  let qty = jQuery(".qty_total").html();
+  let product = jQuery(".counter").data("id");
+  if (qty == 0) {
+    swal.fire("Stop!", "Please add quantity", "error");
+  } else {
+    jQuery.ajax({
+      type: "POST",
+      url: my_ajax_object.ajaxurl,
+      dataType: "json",
+      data: {
+        action: "single_add_to_cart",
+        quantity: qty,
+        product: product,
+      },
+      beforeSend: function () {
+        jQuery(".loader").css("visibility", "visible");
+      },
+      complete: function () {
+        jQuery(".loader").css("visibility", "hidden");
+      },
+      success: function (res) {
+        console.log(res);
+        if (res) {
+          swal.fire("Great!", "Product Added to Cart Successfully", "success");
+        } else {
+          swal.fire("Sorry!", "Something went wrong", "error");
+        }
+      },
+    });
+  }
+});
