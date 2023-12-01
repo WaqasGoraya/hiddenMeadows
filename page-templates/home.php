@@ -4,6 +4,23 @@
 
 get_header();
 
+
+$blogs_args = array(
+
+    'post_type' => 'ourblogs',
+
+    'post_status' => 'publish',
+
+    'posts_per_page' => 6,
+
+    'orderby' => 'date',
+
+    'order' => 'ASC',
+
+);
+
+$blogs_query = new WP_Query($blogs_args);
+
 ?>
 <!--------------------------- our wine Section Start ----------------------------->
 <section class="section-products pt-3 pb-5">
@@ -93,113 +110,6 @@ get_header();
 </section>
 <!--------------------------- our wine Section End ------------------------------->
 
-<!------------------------ Delicious Section Start ------------------------------->
-<!-- <section class="delicious">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-3">
-                    <div class="main-sec mt-5">
-                        <p class="mb-0">Special Offers</p>
-                        <h3>Deal of the Delicious Wine</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                            ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-                            consequat massa quis enim.
-                            <br> <br>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                            ridiculus mus.
-                            <br> <br>
-                            <i> <b>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</b></i>
-                        </p>
-                        <div class="deliciious-btn mt-4">
-                            <button>Shop Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-3">
-                    <div>
-                        <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/bottle.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!------------------------ Delicious End ----------------------------------------->
-
-<!------------------------ Wine Making Section Start ----------------------------->
-<!-- <section class="wine-making">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div>
-                        <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/wine-1.png" alt="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="right-sec mt-3">
-                        <div class="up-text text-start">
-                            <span>Our Wine</span>
-                        </div>
-                        <h2>Process of WineMaking</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,luctus nec
-                            ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <div class="harvesting mt-3 ">
-                            <img class="img-fluid me-3" src="<?= get_template_directory_uri(); ?>/assets/images/harvesting.png" alt="">
-                            <div>
-                                <h5 class="mb-0">Harvesting</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus,luctus nec.</p>
-                            </div>
-                        </div>
-                        <div class="harvesting mt-3 ">
-                            <img class="img-fluid me-3" src="<?= get_template_directory_uri(); ?>/assets/images/prcs-1.png" alt="">
-                            <div>
-                                <h5 class="mb-0">Crushing & Pressing</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus,luctus nec.</p>
-                            </div>
-                        </div>
-                        <div class="harvesting mt-3 ">
-                            <img class="img-fluid me-3" src="<?= get_template_directory_uri(); ?>/assets/images/prcs-2.png" alt="">
-                            <div>
-                                <h5 class="mb-0">Fermentation</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus,luctus nec.</p>
-                            </div>
-                        </div>
-                        <div class="harvesting mt-3 ">
-                            <img class="img-fluid me-3" src="<?= get_template_directory_uri(); ?>/assets/images/prcs-3.png" alt="">
-                            <div>
-                                <h5 class="mb-0">Ageing & Bottling</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus,luctus nec.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!------------------------ Wine Making Section End --------------------------->
-
-<!------------------------ Amount Section Start ------------------------------>
-<!-- <section class="amount">
-        <div class="container">
-            <div class="mid-sec">
-                <p class="mb-0">Wanna booking for a</p>
-                <h2>Large Amount Wine?</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-                    leap into electronic typesetting.</p>
-                <div>
-                    <button>Get a Qoute</button>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!------------------------ Amount Section End ----------------------------------->
 
 <!------------------------ Artical Section Start -------------------------------->
 <section class="artical-sec">
@@ -210,85 +120,28 @@ get_header();
         <h2 class="mb-4 text-center text-white fw-bold">Latest Articles</h2>
         <div class="swiper mySwiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide">
-                    <div class="main-div">
-                        <div class="img-sec">
-                            <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/artical-1.png" alt="">
+                <?php if ($blogs_query->have_posts()) : ?>
+                    <?php foreach ($blogs_query->posts as $key => $blog) :
+                        $blog_img = wp_get_attachment_url(get_post_thumbnail_id($blog->ID));
+
+                        $blog_meta = get_post_meta($blog->ID);
+                    ?>
+                        <div class="swiper-slide">
+                            <div class="main-div">
+                                <div class="img-sec">
+                                    <img class="img-fluid" src="<?= $blog_img; ?>" alt="">
+                                </div>
+                                <div class="artical-details">
+                                    <h5><?= $blog->post_title; ?></h5>
+                                    <p><?= $blog->post_excerpt; ?></p>
+                                    <a href="<?= get_permalink($blog->ID); ?>" class="read-more-link">read more <i class=" ms-1 fa fa-arrow-right"></i></a>
+                                </div>
+                            </div>
                         </div>
-                        <div class="artical-details">
-                            <h5>Travelling Solo Is Awesome</h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum
-                                is simply dummy text of the printing and typesetting.</p>
-                            <a href="#" class="read-more-link">read more <i class=" ms-1 fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="main-div">
-                        <div class="img-sec">
-                            <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/artical-2.png" alt="">
-                        </div>
-                        <div class="artical-details bg-white">
-                            <h5>Travelling Solo Is Awesome</h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum
-                                is simply dummy text of the printing and typesetting.</p>
-                            <a href="#" class="read-more-link">read more <i class=" ms-1 fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="main-div">
-                        <div class="img-sec">
-                            <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/artical-3.png" alt="">
-                        </div>
-                        <div class="artical-details">
-                            <h5>Travelling Solo Is Awesome</h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum
-                                is simply dummy text of the printing and typesetting.</p>
-                            <a href="#" class="read-more-link">read more <i class=" ms-1 fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="main-div">
-                        <div class="img-sec">
-                            <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/artical-1.png" alt="">
-                        </div>
-                        <div class="artical-details">
-                            <h5>Travelling Solo Is Awesome</h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum
-                                is simply dummy text of the printing and typesetting.</p>
-                            <a href="#" class="read-more-link">read more <i class=" ms-1 fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="main-div">
-                        <div class="img-sec">
-                            <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/artical-2.png" alt="">
-                        </div>
-                        <div class="artical-details">
-                            <h5>Travelling Solo Is Awesome</h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum
-                                is simply dummy text of the printing and typesetting.</p>
-                            <a href="#" class="read-more-link">read more <i class=" ms-1 fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide">
-                    <div class="main-div">
-                        <div class="img-sec">
-                            <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/artical-3.png" alt="">
-                        </div>
-                        <div class="artical-details">
-                            <h5>Travelling Solo Is Awesome</h5>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry Lorem Ipsum
-                                is simply dummy text of the printing and typesetting.</p>
-                            <a href="#" class="read-more-link">read more <i class=" ms-1 fa fa-arrow-right"></i></a>
-                        </div>
-                    </div>
-                </div>
+                <?php endforeach;
+                endif; ?>
             </div>
+
             <div class="swiper-pagination"></div>
         </div>
     </div>

@@ -26,8 +26,21 @@ function custom_reset_password_form($atts)
     return wc_get_template('myaccount/form-reset-password.php', array('form' => 'form-reset-password'));
 }
 
-add_shortcode('woocommerce_reset_password', 'custom_reset_password_form');
+add_shortcode('woocommerce_custom_my_account', 'custom_my_account');
 
+/**
+
+ * Reset password confirmation shortcode
+
+ */
+
+function custom_my_account($atts)
+
+{
+    return wc_get_template('myaccount/my-account.php', array('form' => 'my-account'));
+}
+
+add_shortcode('woocommerce_lost_password_confirmation', 'custom_lost_password_confirmation');
 /**
 
  * Reset password confirmation shortcode

@@ -218,3 +218,9 @@ Use it to make something cool, have fun, and share what you've learned with othe
   background-color: rgb(99, 26, 28, 0.3);
   visibility: hidden;
 }
+
+/* My Account CSS */
+.woocommerce-MyAccount-navigation ul {
+  padding-left: 0;
+  list-style-type: none;
+}

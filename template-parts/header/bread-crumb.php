@@ -189,6 +189,20 @@
                  </div>
              </div>
              <!-- register breadcrumb end -->
+         <?php elseif (is_page('my-account')) : ?>
+             <!-- register breadcrumb start -->
+             <div class="row row-pos-inner mb-5 mb-md-0">
+                 <div class="col-md-12 mx-auto flex-xxl-grow-1">
+                     <div class="">
+                         <h2 class="banner-title">My Account</h2>
+                         <!-- <div class="d-flex align-items-start">
+                             <?= do_shortcode('[woocommerce_custom_my_account]'); ?>
+                         </div> -->
+                         <!-- <img src="<?= get_template_directory_uri(); ?>/assets/images/wine-1.png" alt="wine" class="img-wine"> -->
+                     </div>
+                 </div>
+             </div>
+             <!-- register breadcrumb end -->
 
          <?php elseif (is_page('forgot-password')) : ?>
              <!-- forgot-password breadcrumb start -->
