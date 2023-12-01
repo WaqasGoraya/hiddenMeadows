@@ -675,7 +675,7 @@ body {
 }
 
 .customer .card-body .img-client {
-  height: auto;
+  max-height: auto;
   max-width: 90px;
   margin: 0 0 15px;
 }
@@ -1024,7 +1024,7 @@ body {
   background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
     url("../images/contact_banner.png") center center no-repeat;
   background-size: cover;
-  height: 115vh;
+  height: 90vh;
 }
 
 .products-bg {

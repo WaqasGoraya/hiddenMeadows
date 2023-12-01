@@ -353,9 +353,14 @@ get_header();
     </div>
     </section>
     <!-------------------------------- Products End ------------------------------------>
-<?php else: ?>
-    <div class="container">
-        <?php the_content();?>
-    </div>
+
+    <?php else: ?>
+        <div class="container border my-5" style="border-radius: 5px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <?php the_content();?>
+                </div>
+            </div>
+        </div>
 <?php endif; ?>
 <?php get_footer(); ?>
