@@ -56,10 +56,6 @@ function load_more_producers()
     } else {
         $response = '';
     }
-
-    //echo $response;
-
-
     $result = [
         'max' => $count->publish,
         'html' => $response,

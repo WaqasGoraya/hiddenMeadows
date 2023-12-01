@@ -98,23 +98,24 @@ get_header();
                 <div class="col-md-12">
                     <nav class="filter-nav">
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button class="nav-link wine_title" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="">All Wines</button>
-                            <button class="nav-link wine_title <?= $type == 'red-wine' ? 'active' : '' ?>" id="nav-red-tab" data-bs-toggle="tab" data-bs-target="#nav-red" type="button" role="tab" aria-controls="nav-red" aria-selected="<?= $type == 'red-wine' ? 'true' : 'false' ?>">Red Wine</button>
-                            <button class="nav-link wine_title <?= $type == 'rose-wine' ? 'active' : '' ?>" id="nav-rose-tab" data-bs-toggle="tab" data-bs-target="#nav-rose" type="button" role="tab" aria-controls="nav-rose" aria-selected="<?= $type == 'rose-wine' ? 'true' : 'false' ?>">Rose Wine</button>
-                            <button class="nav-link wine_title <?= $type == 'white-wine' ? 'active' : '' ?>" id="nav-white-tab" data-bs-toggle="tab" data-bs-target="#nav-white" type="button" role="tab" aria-controls="nav-white" aria-selected="<?= $type == 'white-wine' ? 'true' : 'false' ?>">White Wine</button>
-                            <button class="nav-link wine_title <?= $type == 'sparkling-wine' ? 'active' : '' ?>" id="nav-sparkling-tab" data-bs-toggle="tab" data-bs-target="#nav-sparkling" type="button" role="tab" aria-controls="nav-sparkling" aria-selected="<?= $type == 'sparkling-wine' ? 'true' : 'false' ?>">Sparkling Wine</button>
+                            <button onclick="setAttr('all')" class="nav-link wine_title" id="nav-all-tab" data-bs-toggle="tab" data-bs-target="#nav-all" type="button" role="tab" aria-controls="nav-all" aria-selected="">All Wines</button>
+                            <button onclick="setAttr('red')" class="nav-link wine_title <?= $type == 'red-wine' ? 'active' : '' ?>" id="nav-red-tab" data-bs-toggle="tab" data-bs-target="#nav-red" type="button" role="tab" aria-controls="nav-red" aria-selected="<?= $type == 'red-wine' ? 'true' : 'false' ?>">Red Wine</button>
+                            <button onclick="setAttr('rose')" class="nav-link wine_title <?= $type == 'rose-wine' ? 'active' : '' ?>" id="nav-rose-tab" data-bs-toggle="tab" data-bs-target="#nav-rose" type="button" role="tab" aria-controls="nav-rose" aria-selected="<?= $type == 'rose-wine' ? 'true' : 'false' ?>">Rose Wine</button>
+                            <button onclick="setAttr('white')" class="nav-link wine_title <?= $type == 'white-wine' ? 'active' : '' ?>" id="nav-white-tab" data-bs-toggle="tab" data-bs-target="#nav-white" type="button" role="tab" aria-controls="nav-white" aria-selected="<?= $type == 'white-wine' ? 'true' : 'false' ?>">White Wine</button>
+                            <button onclick="setAttr('sparkling')" class="nav-link wine_title <?= $type == 'sparkling-wine' ? 'active' : '' ?>" id="nav-sparkling-tab" data-bs-toggle="tab" data-bs-target="#nav-sparkling" type="button" role="tab" aria-controls="nav-sparkling" aria-selected="<?= $type == 'sparkling-wine' ? 'true' : 'false' ?>">Sparkling Wine</button>
                         </div>
                     </nav>
                     <h2 class="filter-title"><?= $current_cat->name; ?></h2>
                     <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                        <form action="#">
-                            <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search">
-                                <button type="submit" class="btn btn-search">
-                                    <i class="fa fa-search"></i>
-                                </button>
-                            </div>
-                        </form>
+                      <form  id="searchFrom">
+                        <div class="input-group">
+                            <input type="hidden" id="search_cat"  name="search_cat" value="all">
+                            <input type="text" name="search" id="search" class="form-control" placeholder="Search" data-cat="" required>
+                            <button type="submit" class="btn btn-search">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+                    </form>
                         <button class="btn btn-view-all mt-4 mt-md-0">view all</button>
                     </div>
                     <div class="tab-content" id="nav-tabContent">
@@ -131,11 +132,8 @@ get_header();
                                     ?>
                                         <div class="col-md-4 col-lg-3">
                                             <div class="card">
-                                                <div class="img-box">
-                                                    <a href="#" class="btn btn-cart">
-                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                        Add to Cart
-                                                    </a>
+                                                <div class="img-box" data-id="<?= $product->ID; ?>">
+                                               <?php cart_login_check(); ?>
                                                     <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                                 </div>
                                                 <a href="<?= get_permalink($product->ID) ?>">
@@ -150,8 +148,12 @@ get_header();
                                                 </a>
                                             </div>
                                         </div>
-                                <?php endforeach;
-                                endif; ?>
+                                <?php endforeach;?>
+                                      <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                             </div>
                             <?php if ($p_count->publish > 8) : ?>
                                 <div class="row">
@@ -174,11 +176,8 @@ get_header();
                                     ?>
                                         <div class="col-md-4 col-lg-3">
                                             <div class="card">
-                                                <div class="img-box">
-                                                    <a href="#" class="btn btn-cart">
-                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                        Add to Cart
-                                                    </a>
+                                                <div class="img-box" data-id="<?= $product->ID; ?>">
+                                                  <?php cart_login_check(); ?>
                                                     <img src="<?= $product_img; ?>" alt="product" class="card-img-top">
                                                 </div>
                                                 <a href="<?= get_permalink($product->ID) ?>">
@@ -193,8 +192,12 @@ get_header();
                                                 </a>
                                             </div>
                                         </div>
-                                <?php endforeach;
-                                endif; ?>
+                                <?php endforeach;?>
+                                      <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                             </div>
                             <?php if ($redwine->found_posts > 8) : ?>
                                 <div class="row">
@@ -217,11 +220,8 @@ get_header();
                                     ?>
                                         <div class="col-md-4 col-lg-3">
                                             <div class="card">
-                                                <div class="img-box">
-                                                    <a href="#" class="btn btn-cart">
-                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                        Add to Cart
-                                                    </a>
+                                                <div class="img-box" data-id="<?= $product->ID; ?>">
+                                                <?php cart_login_check(); ?>
                                                     <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                                 </div>
                                                 <a href="<?= get_permalink($product->ID) ?>">
@@ -236,8 +236,12 @@ get_header();
                                                 </a>
                                             </div>
                                         </div>
-                                <?php endforeach;
-                                endif; ?>
+                                <?php endforeach;?>
+                                      <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                             </div>
                             <?php if ($rosewine->found_posts > 8) : ?>
                                 <div class="row">
@@ -260,11 +264,8 @@ get_header();
                                     ?>
                                         <div class="col-md-4 col-lg-3">
                                             <div class="card">
-                                                <div class="img-box">
-                                                    <a href="#" class="btn btn-cart">
-                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                        Add to Cart
-                                                    </a>
+                                                <div class="img-box" data-id="<?= $product->ID; ?>">
+                                                <?php cart_login_check(); ?>
                                                     <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                                 </div>
                                                 <a href="<?= get_permalink($product->ID) ?>">
@@ -279,8 +280,12 @@ get_header();
                                                 </a>
                                             </div>
                                         </div>
-                                <?php endforeach;
-                                endif; ?>
+                                <?php endforeach;?>
+                                      <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                             </div>
                             <?php if ($whitewine->found_posts > 8) : ?>
                                 <div class="row">
@@ -303,11 +308,8 @@ get_header();
                                     ?>
                                         <div class="col-md-4 col-lg-3">
                                             <div class="card">
-                                                <div class="img-box">
-                                                    <a href="#" class="btn btn-cart">
-                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                        Add to Cart
-                                                    </a>
+                                                <div class="img-box" data-id="<?= $product->ID; ?>">
+                                               <?php cart_login_check(); ?>
                                                     <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                                 </div>
                                                 <a href="<?= get_permalink($product->ID) ?>">
@@ -322,8 +324,12 @@ get_header();
                                                 </a>
                                             </div>
                                         </div>
-                                <?php endforeach;
-                                endif; ?>
+                                <?php endforeach;?>
+                                      <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                             </div>
                             <?php if ($sprwine->found_posts > 8) : ?>
                                 <div class="row">
@@ -347,6 +353,9 @@ get_header();
     </div>
     </section>
     <!-------------------------------- Products End ------------------------------------>
-
+<?php else: ?>
+    <div class="container">
+        <?php the_content();?>
+    </div>
 <?php endif; ?>
 <?php get_footer(); ?>

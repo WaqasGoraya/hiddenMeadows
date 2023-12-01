@@ -13,87 +13,35 @@ get_header();
         <div class="row gy-4">
             <div class="col-md-7 col-lg-8">
                 <div class="d-lg-none">
-                    <div class="responsive-product">
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Image</h2>
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/product-5.png" alt="product" class="img-res">
+                    <?php foreach (WC()->cart->get_cart() as $cart_item) : ?>
+                        <div class="responsive-product">
+                            <div class="d-flex align-items-center justify-content-between gap-3 p-2">
+                                <h2 class="res-title">Image</h2>
+                                <img src="<?= get_template_directory_uri(); ?>/assets/images/product-5.png" alt="product" class="img-res">
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between gap-3 p-2">
+                                <h2 class="res-title">Name</h2>
+                                <p class="res-text">2017 Cavalchina Bardolino Chiaretto</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between gap-3 p-2">
+                                <h2 class="res-title">Price</h2>
+                                <p class="res-number">&dollar;89.00</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between gap-3 p-2">
+                                <h2 class="res-title">Quantity</h2>
+                                <p class="res-number">1</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-between gap-3 p-2">
+                                <h2 class="res-title">Total</h2>
+                                <p class="res-number">&dollar;89.00</p>
+                            </div>
+                            <div class="d-flex align-items-center justify-content-end p-2">
+                                <a href="#">
+                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_trash.png" alt="trash" class="img-fluid">
+                                </a>
+                            </div>
                         </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Name</h2>
-                            <p class="res-text">2017 Cavalchina Bardolino Chiaretto</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Price</h2>
-                            <p class="res-number">&dollar;89.00</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Quantity</h2>
-                            <p class="res-number">1</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Total</h2>
-                            <p class="res-number">&dollar;89.00</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-end p-2">
-                            <a href="#">
-                                <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_trash.png" alt="trash" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="responsive-product">
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Image</h2>
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/product-5.png" alt="product" class="img-res">
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Name</h2>
-                            <p class="res-text">2017 Cavalchina Bardolino Chiaretto</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Price</h2>
-                            <p class="res-number">&dollar;89.00</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Quantity</h2>
-                            <p class="res-number">1</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Total</h2>
-                            <p class="res-number">&dollar;89.00</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-end p-2">
-                            <a href="#">
-                                <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_trash.png" alt="trash" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="responsive-product">
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Image</h2>
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/product-5.png" alt="product" class="img-res">
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Name</h2>
-                            <p class="res-text">2017 Cavalchina Bardolino Chiaretto</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Price</h2>
-                            <p class="res-number">&dollar;89.00</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Quantity</h2>
-                            <p class="res-number">1</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-between gap-3 p-2">
-                            <h2 class="res-title">Total</h2>
-                            <p class="res-number">&dollar;89.00</p>
-                        </div>
-                        <div class="d-flex align-items-center justify-content-end p-2">
-                            <a href="#">
-                                <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_trash.png" alt="trash" class="img-fluid">
-                            </a>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
                 <div class="table-responsive d-none d-lg-block">
                     <table class="table table-borderless">
@@ -107,60 +55,35 @@ get_header();
                             </tr>
                         </thead>
                         <tbody class="table-body">
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-4">
-                                        <div class="product-box">
-                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/product-5.png" alt="product">
+                            <?php foreach (WC()->cart->get_cart() as $cart_item) :
+                                $product = $cart_item['data'];
+                                $product_id = $cart_item['product_id'];
+                                $price = WC()->cart->get_product_price($product);
+                                $subtotal = WC()->cart->get_product_subtotal($product, $cart_item['quantity']);
+                                $image = get_the_post_thumbnail_url($cart_item['product_id']);
+                                // echo "<pre>";
+                                // print_r($price);
+                                // exit;
+                            ?>
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-4">
+                                            <div class="product-box">
+                                                <img src="<?= $image; ?>" alt="product">
+                                            </div>
+                                            <div class="product-name"><?= $product->get_title(); ?></div>
                                         </div>
-                                        <div class="product-name">2017 Cavalchina Bardolino Chiaretto</div>
-                                    </div>
-                                </td>
-                                <td>&dollar;89.00</td>
-                                <td>1</td>
-                                <td>&dollar;89.00</td>
-                                <td>
-                                    <a href="#">
-                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_trash.png" alt="trash" class="img-trash">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-4">
-                                        <div class="product-box">
-                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/product-5.png" alt="product">
-                                        </div>
-                                        <div class="product-name">2017 Cavalchina Bardolino Chiaretto</div>
-                                    </div>
-                                </td>
-                                <td>&dollar;89.00</td>
-                                <td>1</td>
-                                <td>&dollar;89.00</td>
-                                <td>
-                                    <a href="#">
-                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_trash.png" alt="trash" class="img-trash">
-                                    </a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="d-flex align-items-center gap-4">
-                                        <div class="product-box">
-                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/product-5.png" alt="product">
-                                        </div>
-                                        <div class="product-name">2017 Cavalchina Bardolino Chiaretto</div>
-                                    </div>
-                                </td>
-                                <td>&dollar;89.00</td>
-                                <td>1</td>
-                                <td>&dollar;89.00</td>
-                                <td>
-                                    <a href="#">
-                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_trash.png" alt="trash" class="img-trash">
-                                    </a>
-                                </td>
-                            </tr>
+                                    </td>
+                                    <td><?= $price; ?></td>
+                                    <td><?= $cart_item['quantity']; ?></td>
+                                    <td><?= $subtotal; ?></td>
+                                    <td>
+                                        <a id="cart_remove" style="cursor: pointer;">
+                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_trash.png" alt="trash" class="img-trash">
+                                        </a>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                         <tfoot>
                             <tr>
@@ -200,6 +123,10 @@ get_header();
         </div>
     </div>
 </section> -->
-<?= do_shortcode('[woocommerce_cart]'); ?>
+<section class="section-cart">
+    <div class="container">
+        <?= do_shortcode('[woocommerce_cart]'); ?>
+    </div>
+</section>
 <!-------------------------------- Cart End ------------------------------------>
 <?php get_footer(); ?>
