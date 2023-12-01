@@ -5,6 +5,7 @@
 get_header();
 
 
+
 $blogs_args = array(
 
     'post_type' => 'ourblogs',
@@ -21,6 +22,15 @@ $blogs_args = array(
 
 $blogs_query = new WP_Query($blogs_args);
 
+// Our Wines
+$params = array(
+    'posts_per_page' => 4,
+    'post_type' => 'product',
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC',
+);
+$products = new WP_Query($params);
 ?>
 <!--------------------------- our wine Section Start ----------------------------->
 <section class="section-products pt-3 pb-5">
@@ -32,80 +42,46 @@ $blogs_query = new WP_Query($blogs_args);
             </div>
         </div>
         <div class="row gy-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="img-box">
-                        <a href="#" class="btn btn-cart">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                            Add to Cart
-                        </a>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="product" class="card-img-top">
-                    </div>
-                    <a href="product_detail.html">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">Lorem Ipsum</h3>
-                            <p class="card-text">Nuvole</p>
+            <?php if ($products->have_posts()) : ?>
+                <?php foreach ($products->posts as $key => $product) :
+                    $product_img = wp_get_attachment_url(get_post_thumbnail_id($product->ID));
+
+                    $product_meta = get_post_meta($product->ID);
+                ?>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <div class="img-box" data-id="<?= $product->ID; ?>">
+                                <?php cart_login_check(); ?>
+                                <img src="<?= $product_img; ?>" alt="product" class="card-img-top">
+                            </div>
+                            <a href="<?= get_permalink($product->ID); ?>">
+                                <div class="card-body text-center">
+                                    <h3 class="card-title"><?= $product->post_title; ?></h3>
+                                    <?php if (isset($product_meta['producer_id'])) : ?>
+                                        <p class="card-text"><?= $product_meta['producer_id'][0] ?></p>
+                                    <?php else : ?>
+                                        <p class="card-text">Nuvole</p>
+                                    <?php endif; ?>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="img-box">
-                        <a href="#" class="btn btn-cart">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                            Add to Cart
-                        </a>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="product" class="card-img-top">
                     </div>
-                    <a href="product_detail.html">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">Lorem Ipsum</h3>
-                            <p class="card-text">Nuvole</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="img-box">
-                        <a href="#" class="btn btn-cart">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                            Add to Cart
-                        </a>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="product" class="card-img-top">
-                    </div>
-                    <a href="product_detail.html">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">Lorem Ipsum</h3>
-                            <p class="card-text">Nuvole</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="img-box">
-                        <a href="#" class="btn btn-cart">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                            Add to Cart
-                        </a>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="product" class="card-img-top">
-                    </div>
-                    <a href="product_detail.html">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">Lorem Ipsum</h3>
-                            <p class="card-text">Nuvole</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <?php endforeach;
+            endif; ?>
         </div>
         <div class="row">
             <div class="col text-center mt-5">
-                <a href="#" class="btn btn-see-all">see all</a>
+                <a href="<?= site_url(); ?>/products" class="btn btn-see-all">see all</a>
             </div>
         </div>
+    </div>
+              <div class="loader">
+        <?xml version="1.0" encoding="utf-8"?>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="144px" height="144px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <circle cx="50" cy="50" r="28" stroke-width="7" stroke="#912623" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+        </circle>
+        <!-- [ldio] generated by https://loading.io/ --></svg>
     </div>
 </section>
 <!--------------------------- our wine Section End ------------------------------->

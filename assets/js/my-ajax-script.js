@@ -48,10 +48,10 @@ jQuery("#contact_form").validate({
         data: form_data,
       },
       beforeSend: function () {
-        jQuery(".loader_content").css("visibility", "visible");
+        jQuery(".loader").css("visibility", "visible");
       },
       complete: function () {
-        jQuery(".loader_content").css("visibility", "hidden");
+        jQuery(".loader").css("visibility", "hidden");
       },
       success: function (data) {
         if (data == 1) {
@@ -129,3 +129,80 @@ jQuery("#load_more_blog").on("click", function () {
     },
   });
 });
+
+//Single product cart script
+jQuery("#single_cart").on("click", function () {
+  let qty = jQuery(".qty_total").html();
+  let product = jQuery(".counter").data("id");
+  if (qty == 0) {
+    swal.fire("Stop!", "Please add quantity", "error");
+  } else {
+    jQuery.ajax({
+      type: "POST",
+      url: my_ajax_object.ajaxurl,
+      dataType: "json",
+      data: {
+        action: "single_add_to_cart",
+        quantity: qty,
+        product: product,
+      },
+      beforeSend: function () {
+        jQuery(".loader").css("visibility", "visible");
+      },
+      complete: function () {
+        jQuery(".loader").css("visibility", "hidden");
+      },
+      success: function (res) {
+        console.log(res);
+        if (res.data == true) {
+          swal.fire("Great!", "Product Added to Cart Successfully", "success");
+          window.location.href = res.url;
+        } else {
+          swal.fire("Sorry!", "Something went wrong", "error");
+        }
+      },
+    });
+  }
+});
+// add to cart
+jQuery(document).on("click", "#cart_one", function () {
+  let product = jQuery(this).closest("[data-id]").data("id");
+  jQuery.ajax({
+    type: "POST",
+    url: my_ajax_object.ajaxurl,
+    dataType: "json",
+    data: {
+      action: "add_to_cart",
+      product: product,
+    },
+    beforeSend: function () {
+      jQuery(".loader").css("visibility", "visible");
+    },
+    complete: function () {
+      jQuery(".loader").css("visibility", "hidden");
+    },
+    success: function (res) {
+      console.log(res);
+      if (res.data == true) {
+        Swal.fire({
+          icon: "success",
+          title: "Great",
+          text: "Product Added to Cart Successfully!",
+          confirmButtonColor: "#631a1c",
+          confirmButtonText: "Continue Shopping!",
+          footer: `<a href="${res.url}">Go To Cart </a>`,
+        });
+      } else {
+        swal.fire("Sorry!", "Something went wrong", "error");
+      }
+    },
+  });
+});
+//Remove Cart Item
+jQuery(document).on("click", "#cart_remove", function () {
+  alert("cart");
+});
+// products page search args
+function setAttr(arg) {
+  jQuery("#search_cat").val(arg);
+}

@@ -219,6 +219,7 @@ do_action('woocommerce_account_navigation'); ?>
 	}
 </style>
 
+
 <div class="woocommerce-MyAccount-content">
 	<?php
 	/**

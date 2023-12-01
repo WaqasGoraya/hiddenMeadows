@@ -2020,8 +2020,9 @@ body {
 }
 
 .section-cart .table-body .product-box img {
-  height: auto;
-  max-width: 40px;
+  height: 95px;
+  width: 40px;
+  object-fit: cover;
 }
 
 .section-cart .table tfoot .subtotal {
