@@ -282,3 +282,55 @@ Use it to make something cool, have fun, and share what you've learned with othe
   border-right: none;
   padding: 10px 0;
 }
+
+.cart_totals .shop_table .order-total td,
+.cart_totals .shop_table .order-total th {
+  border-top: 1px solid #fff !important;
+  border-bottom: 1px solid #fff !important;
+}
+
+.section-cart .woocommerce .cart_totals td .amount {
+  font-size: 20px;
+  font-weight: 500 !important;
+  text-transform: capitalize;
+}
+
+.section-cart .woocommerce .cart_totals .cart-subtotal td,
+.section-cart .woocommerce .cart_totals .shipping td,
+.section-cart .woocommerce .cart_totals .order-total td {
+  text-align: end;
+}
+
+.section-cart .woocommerce .product-name a,
+.section-cart .woocommerce .product-price span,
+.section-cart .woocommerce .product-subtotal span {
+  color: #282828;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.section-cart .woocommerce .shop_table thead {
+  background: #f1f1f1;
+}
+
+.section-cart .woocommerce table.shop_table {
+  border: 2px solid #f1f1f1;
+  border-radius: 0 !important;
+}
+
+/* .section-cart .woocommerce table.shop_table td {
+  border-top: 2px solid #f1f1f1 !important;
+} */
+
+.section-cart .woocommerce .product-quantity .input-text.qty.text {
+  background: none;
+  border: none;
+  color: #282828;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.section-cart .woocommerce .product-remove a.remove:hover {
+  background: none !important;
+}
