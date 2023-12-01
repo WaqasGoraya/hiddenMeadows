@@ -218,3 +218,59 @@ Use it to make something cool, have fun, and share what you've learned with othe
   background-color: rgb(99, 26, 28, 0.3);
   visibility: hidden;
 }
+.section-cart .woocommerce-Price-amount.amount {
+  background: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+}
+.section-cart .woocommerce {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(var(--bs-gutter-y) * -1);
+  margin-right: calc(var(--bs-gutter-x) * -0.5);
+  margin-left: calc(var(--bs-gutter-x) * -0.5);
+}
+.section-cart .woocommerce .cart-collaterals .cart_totals {
+  float: none;
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  background: #631a1c;
+  color: #fff;
+  padding: 24px 24px 24px 12px;
+}
+.cart_totals h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.cart_totals .shop_table {
+  border: none !important;
+}
+.cart_totals .shop_table th {
+  font-size: 20px;
+  font-weight: 500 !important;
+  text-transform: capitalize;
+}
+.cart_totals .wc-proceed-to-checkout {
+  text-align: center;
+}
+.cart_totals .wc-proceed-to-checkout a {
+  background: #fff !important;
+  color: #631a1c !important;
+}
+.cart_totals .shop_table th,
+.cart_totals .shop_table td {
+  border-style: hidden !important;
+}
+.cart_totals .shop_table .border-total {
+  border: 1px solid #fff;
+  border-left: none;
+  border-right: none;
+  padding: 10px 0;
+}

@@ -29,3 +29,5 @@ require(HIDDEN_MEDOWS_URL . '/extends/custom-post-types/home_posts.php');
 // Ajax 
 require(HIDDEN_MEDOWS_URL . '/extends/ajax/ajax.php');
 
+//Helper functions
+require(HIDDEN_MEDOWS_URL . '/extends/helpers.php');

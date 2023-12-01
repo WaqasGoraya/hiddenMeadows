@@ -126,11 +126,8 @@ $sprwine = new WP_Query($sprparams);
                                 ?>
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
-                                            <div class="img-box">
-                                                <a href="#" class="btn btn-cart">
-                                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                    Add to Cart
-                                                </a>
+                                            <div class="img-box" data-id="<?= $product->ID; ?>">
+                                            <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -173,11 +170,8 @@ $sprwine = new WP_Query($sprparams);
                                 ?>
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
-                                            <div class="img-box">
-                                                <a href="#" class="btn btn-cart">
-                                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                    Add to Cart
-                                                </a>
+                                            <div class="img-box" data-id="<?= $product->ID; ?>">
+                                           <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img; ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -192,8 +186,12 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;
-                            endif; ?>
+                            <?php endforeach;?>
+                                  <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                         </div>
                            <?php if ($redwine->found_posts > 8) : ?>
                         <div class="row">
@@ -216,11 +214,8 @@ $sprwine = new WP_Query($sprparams);
                                 ?>
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
-                                            <div class="img-box">
-                                                <a href="#" class="btn btn-cart">
-                                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                    Add to Cart
-                                                </a>
+                                            <div class="img-box" data-id="<?= $product->ID; ?>">
+                                              <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -235,8 +230,12 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;
-                            endif; ?>
+                            <?php endforeach;?>
+                                  <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                         </div>
                         <?php if ($rosewine->found_posts > 8) : ?>
                         <div class="row">
@@ -259,11 +258,8 @@ $sprwine = new WP_Query($sprparams);
                                 ?>
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
-                                            <div class="img-box">
-                                                <a href="#" class="btn btn-cart">
-                                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                    Add to Cart
-                                                </a>
+                                            <div class="img-box" data-id="<?= $product->ID; ?>">
+                                          <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -278,8 +274,12 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;
-                            endif; ?>
+                            <?php endforeach;?>
+                                  <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                         </div>
                         <?php if ($whitewine->found_posts > 8) : ?>
                         <div class="row">
@@ -302,11 +302,8 @@ $sprwine = new WP_Query($sprparams);
                                 ?>
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
-                                            <div class="img-box">
-                                                <a href="#" class="btn btn-cart">
-                                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                                                    Add to Cart
-                                                </a>
+                                            <div class="img-box" data-id="<?= $product->ID; ?>">
+                                         <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -321,8 +318,12 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;
-                            endif; ?>
+                            <?php endforeach;?>
+                                  <?php else : ?>
+
+                             <h3 class="card-title">No products found!</h3>
+
+                            <?php endif; ?>
                         </div>
                     <?php if ($sprwine->found_posts > 8) : ?>
                         <div class="row">
@@ -347,9 +348,4 @@ $sprwine = new WP_Query($sprparams);
 </section>
 <!-------------------------------- Products End ------------------------------------>
 
-<script>
-    function setAttr(arg){
-     jQuery('#search_cat').val(arg);
-    }
-</script>
 <?php get_footer(); ?>

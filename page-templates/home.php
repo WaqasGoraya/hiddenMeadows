@@ -4,6 +4,15 @@
 
 get_header();
 
+// Our Wines
+$params = array(
+    'posts_per_page' => 4,
+    'post_type' => 'product',
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC',
+);
+$products = new WP_Query($params);
 ?>
 <!--------------------------- our wine Section Start ----------------------------->
 <section class="section-products pt-3 pb-5">
@@ -15,191 +24,49 @@ get_header();
             </div>
         </div>
         <div class="row gy-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="img-box">
-                        <a href="#" class="btn btn-cart">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                            Add to Cart
-                        </a>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="product" class="card-img-top">
-                    </div>
-                    <a href="product_detail.html">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">Lorem Ipsum</h3>
-                            <p class="card-text">Nuvole</p>
+            <?php if ($products->have_posts()) : ?>
+                <?php foreach ($products->posts as $key => $product) :
+                    $product_img = wp_get_attachment_url(get_post_thumbnail_id($product->ID));
+
+                    $product_meta = get_post_meta($product->ID);
+                ?>
+                    <div class="col-md-6 col-lg-3">
+                        <div class="card">
+                            <div class="img-box" data-id="<?= $product->ID; ?>">
+                                <?php cart_login_check(); ?>
+                                <img src="<?= $product_img; ?>" alt="product" class="card-img-top">
+                            </div>
+                            <a href="<?= get_permalink($product->ID); ?>">
+                                <div class="card-body text-center">
+                                    <h3 class="card-title"><?= $product->post_title; ?></h3>
+                                    <?php if (isset($product_meta['producer_id'])) : ?>
+                                        <p class="card-text"><?= $product_meta['producer_id'][0] ?></p>
+                                    <?php else : ?>
+                                        <p class="card-text">Nuvole</p>
+                                    <?php endif; ?>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="img-box">
-                        <a href="#" class="btn btn-cart">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                            Add to Cart
-                        </a>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="product" class="card-img-top">
                     </div>
-                    <a href="product_detail.html">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">Lorem Ipsum</h3>
-                            <p class="card-text">Nuvole</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="img-box">
-                        <a href="#" class="btn btn-cart">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                            Add to Cart
-                        </a>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="product" class="card-img-top">
-                    </div>
-                    <a href="product_detail.html">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">Lorem Ipsum</h3>
-                            <p class="card-text">Nuvole</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-6 col-lg-3">
-                <div class="card">
-                    <div class="img-box">
-                        <a href="#" class="btn btn-cart">
-                            <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart">
-                            Add to Cart
-                        </a>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="product" class="card-img-top">
-                    </div>
-                    <a href="product_detail.html">
-                        <div class="card-body text-center">
-                            <h3 class="card-title">Lorem Ipsum</h3>
-                            <p class="card-text">Nuvole</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            <?php endforeach;
+            endif; ?>
         </div>
         <div class="row">
             <div class="col text-center mt-5">
-                <a href="#" class="btn btn-see-all">see all</a>
+                <a href="<?= site_url(); ?>/products" class="btn btn-see-all">see all</a>
             </div>
         </div>
     </div>
+              <div class="loader">
+        <?xml version="1.0" encoding="utf-8"?>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="144px" height="144px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <circle cx="50" cy="50" r="28" stroke-width="7" stroke="#912623" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+        </circle>
+        <!-- [ldio] generated by https://loading.io/ --></svg>
+    </div>
 </section>
 <!--------------------------- our wine Section End ------------------------------->
-
-<!------------------------ Delicious Section Start ------------------------------->
-<!-- <section class="delicious">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-3">
-                    <div class="main-sec mt-5">
-                        <p class="mb-0">Special Offers</p>
-                        <h3>Deal of the Delicious Wine</h3>
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                            ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla
-                            consequat massa quis enim.
-                            <br> <br>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.
-                            Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur
-                            ridiculus mus.
-                            <br> <br>
-                            <i> <b>Lorem ipsum dolor sit amet, consectetuer adipiscing elit</b></i>
-                        </p>
-                        <div class="deliciious-btn mt-4">
-                            <button>Shop Now</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-12 col-sm-12 col-md-6 col-lg-6 mt-3">
-                    <div>
-                        <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/bottle.png" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!------------------------ Delicious End ----------------------------------------->
-
-<!------------------------ Wine Making Section Start ----------------------------->
-<!-- <section class="wine-making">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div>
-                        <img class="img-fluid" src="<?= get_template_directory_uri(); ?>/assets/images/wine-1.png" alt="">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="right-sec mt-3">
-                        <div class="up-text text-start">
-                            <span>Our Wine</span>
-                        </div>
-                        <h2>Process of WineMaking</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus,luctus nec
-                            ullamcorper mattis, pulvinar dapibus leo.</p>
-                        <div class="harvesting mt-3 ">
-                            <img class="img-fluid me-3" src="<?= get_template_directory_uri(); ?>/assets/images/harvesting.png" alt="">
-                            <div>
-                                <h5 class="mb-0">Harvesting</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus,luctus nec.</p>
-                            </div>
-                        </div>
-                        <div class="harvesting mt-3 ">
-                            <img class="img-fluid me-3" src="<?= get_template_directory_uri(); ?>/assets/images/prcs-1.png" alt="">
-                            <div>
-                                <h5 class="mb-0">Crushing & Pressing</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus,luctus nec.</p>
-                            </div>
-                        </div>
-                        <div class="harvesting mt-3 ">
-                            <img class="img-fluid me-3" src="<?= get_template_directory_uri(); ?>/assets/images/prcs-2.png" alt="">
-                            <div>
-                                <h5 class="mb-0">Fermentation</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus,luctus nec.</p>
-                            </div>
-                        </div>
-                        <div class="harvesting mt-3 ">
-                            <img class="img-fluid me-3" src="<?= get_template_directory_uri(); ?>/assets/images/prcs-3.png" alt="">
-                            <div>
-                                <h5 class="mb-0">Ageing & Bottling</h5>
-                                <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit
-                                    tellus,luctus nec.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!------------------------ Wine Making Section End --------------------------->
-
-<!------------------------ Amount Section Start ------------------------------>
-<!-- <section class="amount">
-        <div class="container">
-            <div class="mid-sec">
-                <p class="mb-0">Wanna booking for a</p>
-                <h2>Large Amount Wine?</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
-                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
-                    leap into electronic typesetting.</p>
-                <div>
-                    <button>Get a Qoute</button>
-                </div>
-            </div>
-        </div>
-    </section> -->
-<!------------------------ Amount Section End ----------------------------------->
 
 <!------------------------ Artical Section Start -------------------------------->
 <section class="artical-sec">
