@@ -156,7 +156,23 @@
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
-                             <li class="breadcrumb-item"><a href="#">Products</a></li>
+                             <li class="breadcrumb-item"><a href="<?= site_url(); ?>/prooducts">Products</a></li>
+                             <li class="breadcrumb-item active" aria-current="page"><?php the_title(); ?></li>
+                         </ol>
+                     </nav>
+                 </div>
+             </div>
+             <!-- cart producer breadcrumb end -->
+         <?php elseif (is_page('checkout')) : ?>
+             <!-- cart producer breadcrumb start -->
+             <div class="row row-pos-inner">
+                 <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
+                     <h1 class="banner-title"><?php the_title(); ?></h1>
+                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <nav aria-label="breadcrumb">
+                         <ol class="breadcrumb justify-content-center">
+                             <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
+                             <li class="breadcrumb-item"><a href="<?= site_url(); ?>/cart">Cart</a></li>
                              <li class="breadcrumb-item active" aria-current="page"><?php the_title(); ?></li>
                          </ol>
                      </nav>
@@ -189,21 +205,6 @@
                  </div>
              </div>
              <!-- register breadcrumb end -->
-         <?php elseif (is_page('my-account')) : ?>
-             <!-- register breadcrumb start -->
-             <div class="row row-pos-inner mb-5 mb-md-0">
-                 <div class="col-md-12 mx-auto flex-xxl-grow-1">
-                     <div class="">
-                         <h2 class="banner-title">My Account</h2>
-                         <!-- <div class="d-flex align-items-start">
-                             <?= do_shortcode('[woocommerce_custom_my_account]'); ?>
-                         </div> -->
-                         <!-- <img src="<?= get_template_directory_uri(); ?>/assets/images/wine-1.png" alt="wine" class="img-wine"> -->
-                     </div>
-                 </div>
-             </div>
-             <!-- register breadcrumb end -->
-
          <?php elseif (is_page('forgot-password')) : ?>
              <!-- forgot-password breadcrumb start -->
              <div class="row login-box-pos mb-5 mb-md-0">
@@ -216,7 +217,7 @@
                  </div>
              </div>
              <!-- forgot-password breadcrumb end -->
-         <?php elseif (is_page('resett-password')) : ?>
+         <?php elseif (is_page('reset-password')) : ?>
              <!-- reset-password breadcrumb start -->
              <div class="row login-box-pos mb-5 mb-md-0">
                  <div class="col-md-7 text-center mx-auto flex-xxl-grow-1">
@@ -237,6 +238,17 @@
                  </div>
              </div>
              <!-- reset-password confirmation breadcrumb end -->
+         <?php elseif (is_page('my-account')) : ?>
+             <!-- my account breadcrumb start -->
+             <div class="row row-pos-inner mb-5 mb-md-0">
+                 <div class="col-md-12 mx-auto flex-xxl-grow-1">
+                     <div class="">
+                         <h2 class="banner-title">My Account</h2>
+                         <?= do_shortcode('[woocommerce_custom_my_account]'); ?>
+                     </div>
+                 </div>
+             </div>
+             <!-- my account breadcrumb end -->
          <?php elseif (is_product_category()) : ?>
              <!-- products breadcrumb start -->
              <div class="row row-pos-inner">

@@ -254,3 +254,20 @@ if (class_exists('ProductMetaMetabox')) {
 
     new ProductMetaMetabox;
 };
+
+add_filter('woocommerce_return_to_shop_redirect', 'st_woocommerce_shop_url');
+
+/**
+
+ * Redirect WooCommerce Shop URL
+
+ */
+
+
+
+function st_woocommerce_shop_url()
+
+{
+
+    return site_url() . '/products/';
+}

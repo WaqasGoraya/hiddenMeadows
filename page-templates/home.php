@@ -75,7 +75,7 @@ $products = new WP_Query($params);
             </div>
         </div>
     </div>
-              <div class="loader">
+    <div class="loader">
         <?xml version="1.0" encoding="utf-8"?>
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="144px" height="144px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
         <circle cx="50" cy="50" r="28" stroke-width="7" stroke="#912623" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
@@ -109,7 +109,7 @@ $products = new WP_Query($params);
                                 </div>
                                 <div class="artical-details">
                                     <h5><?= $blog->post_title; ?></h5>
-                                    <p><?= $blog->post_excerpt; ?></p>
+                                    <p class="text-limit"><?= $blog->post_excerpt; ?></p>
                                     <a href="<?= get_permalink($blog->ID); ?>" class="read-more-link">read more <i class=" ms-1 fa fa-arrow-right"></i></a>
                                 </div>
                             </div>
@@ -196,12 +196,7 @@ $products = new WP_Query($params);
                 <h2 class="search-title">Stay Up To Date</h2>
             </div>
             <div class="col-md-6 mt-4">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Your Email Address">
-                    <button class="btn btn-submit" type="submit">
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/Vector.svg" alt="submit" class="img-arrow">
-                    </button>
-                </div>
+                <?= do_shortcode('[email-subscribers-form id="2"]'); ?>
             </div>
         </div>
     </div>

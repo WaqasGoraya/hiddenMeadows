@@ -58,7 +58,7 @@ do_action('woocommerce_before_cart'); ?>
 		color: #fff;
 	}
 </style>
-<div class="col-md-8 px-md-4">
+<div class="col-md-7 col-lg-8 px-md-2">
 	<form class="woocommerce-cart-form" action="<?php echo esc_url(wc_get_cart_url()); ?>" method="post">
 		<?php do_action('woocommerce_before_cart_table'); ?>
 
@@ -218,7 +218,7 @@ do_action('woocommerce_before_cart'); ?>
 	</form>
 </div>
 <?php do_action('woocommerce_before_cart_collaterals'); ?>
-<div class="col-md-4 px-md-4">
+<div class="col-md-5 col-lg-4 px-md-2 flex-grow-1">
 	<div class="cart-collaterals">
 		<?php
 		/**

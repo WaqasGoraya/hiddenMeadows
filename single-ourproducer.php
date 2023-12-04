@@ -8,6 +8,14 @@ $link = '#';
 if (isset($post_meta['producer_button_link'][0])) {
     $link = $post_meta['producer_button_link'][0];
 }
+$params = array(
+    'posts_per_page' => 4,
+    'post_type' => 'product',
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC',
+);
+$products = new WP_Query($params);
 
 // echo "<pre>";
 // print_r($link);
@@ -39,82 +47,59 @@ if (isset($post_meta['producer_button_link'][0])) {
 <!-------------------------------- Producers End ------------------------------------>
 
 <!--------------------------- our wine Section Start ----------------------------->
-<section class="our-wine text-center our-wine-inner">
+<section class="our-wine text-center our-wine-inner related-products">
     <div class="container">
         <div class="up-text">
             <span class="text-white">Related Wines</span>
         </div>
         <h2 class="text-center mb-4 text-white">Lorem Ipsum</h2>
         <div class="row">
-            <div class="col-12 col-sm-12 col-md-6 col-lg-3 mt-3">
-                <div class="wine-main-sec">
-                    <div class="winehover">
-                        <button> <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart"> Add to cart</button>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/win-blck.png" alt="">
+            <?php if ($products->have_posts()) : ?>
+                <?php foreach ($products->posts as $key => $product) :
 
-                    </div>
-                    <a href="#">
-                        <div class="wine-text">
-                            <h5>Lorem Ipsum</h5>
-                            <p class="mb-0">Nuvole</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-3 mt-3">
-                <div class="wine-main-sec">
-                    <div class="winehover">
-                        <button> <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart"> Add to cart</button>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/product-4.png" alt="">
+                    $product_img = wp_get_attachment_url(get_post_thumbnail_id($product->ID));
 
-                    </div>
-                    <a href="#">
-                        <div class="wine-text">
-                            <h5>Lorem Ipsum</h5>
-                            <p class="mb-0">Prà Dône</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-3 mt-3">
-                <div class="wine-main-sec">
-                    <div class="winehover">
-                        <button> <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart"> Add to cart</button>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/wine-red.png" alt="">
+                    $product_meta = get_post_meta($product->ID);
 
-                    </div>
-                    <a href="#">
-                        <div class="wine-text" style="background-color: #fff; ">
-                            <h5>Lorem Ipsum</h5>
-                            <p class="mb-0">Crocevia</p>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-12 col-sm-12 col-md-6 col-lg-3 mt-3">
-                <div class="wine-main-sec">
-                    <div class="winehover">
-                        <button> <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-cart"> Add to cart</button>
-                        <img src="<?= get_template_directory_uri(); ?>/assets/images/wine-red-2.png" alt="">
 
-                    </div>
-                    <a href="#">
-                        <div class="wine-text" style="background-color: #fff; ">
-                            <h5>Lorem Ipsum</h5>
-                            <p class="mb-0">Rivella</p>
+                ?>
+                    <div class="col-12 col-sm-12 col-md-6 col-lg-3 mt-3">
+                        <div class="card">
+                            <div class="img-box" data-id="<?= $product->ID; ?>">
+                                <?php cart_login_check(); ?>
+                                <img src="<?= $product_img; ?>" alt="product" class="card-img-top">
+                            </div>
+                            <a href="<?= get_permalink($product->ID); ?>">
+                                <div class="card-body text-center">
+                                    <h3 class="card-title"><?= $product->post_title; ?></h3>
+                                    <?php if (isset($product_meta['producer_id'])) : ?>
+                                        <p class="card-text"><?= $product_meta['producer_id'][0] ?></p>
+                                    <?php else : ?>
+                                        <p class="card-text">Nuvole</p>
+                                    <?php endif; ?>
+                                </div>
+                            </a>
                         </div>
-                    </a>
-                </div>
-            </div>
+                    </div>
+            <?php endforeach;
+            endif; ?>
         </div>
         <div class="row">
             <div class="col text-center text-md-end mt-60">
-                <a href="#" class="view-more-link">
+                <a href="<?= site_url();?>/products" class="view-more-link">
                     <span class="pe-2">view more</span>
                     <i class="fa fa-long-arrow-right"></i>
                 </a>
             </div>
         </div>
+    </div>
+        <div class="loader">
+        <?xml version="1.0" encoding="utf-8"?>
+        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="144px" height="144px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
+        <circle cx="50" cy="50" r="28" stroke-width="7" stroke="#912623" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
+        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+        </circle>
+        <!-- [ldio] generated by https://loading.io/ --></svg>
     </div>
 </section>
 <!--------------------------- our wine Section End ------------------------------->
