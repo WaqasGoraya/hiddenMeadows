@@ -1,6 +1,7 @@
 <?php
 global $post;
 $slug = $post->post_name;
+$cart = WC()->cart->get_cart_contents_count();
 ?>
 
 <body>
@@ -83,7 +84,7 @@ $slug = $post->post_name;
                                                 <li class="nav-item">
                                                     <a class="nav-link position-relative" href="<?= site_url(); ?>/cart">
                                                         <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-icon">
-                                                        <span class="cart-count">0</span>
+                                                        <span class="cart-count"><?= $cart; ?></span>
                                                     </a>
                                                 </li>
                                                 <li class="nav-item user-icon">
