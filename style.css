@@ -546,3 +546,13 @@ Use it to make something cool, have fun, and share what you've learned with othe
   background: #631a1c;
   color: #fff;
 }
+/* Order Received  */
+.woocommerce-order .woocommerce-Price-amount.amount, 
+.woocommerce-order-details .woocommerce-Price-amount.amount,
+.woocommerce-MyAccount-content .woocommerce-Price-amount.amount{
+  background: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+}

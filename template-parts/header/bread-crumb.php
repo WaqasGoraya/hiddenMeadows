@@ -244,7 +244,6 @@
                  <div class="col-md-12 mx-auto flex-xxl-grow-1">
                      <div class="">
                          <h2 class="banner-title">My Account</h2>
-                         <?= do_shortcode('[woocommerce_custom_my_account]'); ?>
                      </div>
                  </div>
              </div>
