@@ -72,7 +72,7 @@ $slug = $post->post_name;
                                             <span class="navbar-toggler-icon"></span>
                                         </button>
                                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                                            <div class="navbar-nav">
+                                            <div class="navbar-nav align-items-center">
                                                 <?php wp_nav_menu(
                                                     array(
                                                         'theme_location' => 'home_menu',
@@ -80,6 +80,34 @@ $slug = $post->post_name;
                                                     )
                                                 );
                                                 ?>
+                                                <li class="nav-item">
+                                                    <a class="nav-link position-relative" href="<?= site_url(); ?>/cart">
+                                                        <img src="<?= get_template_directory_uri(); ?>/assets/images/cart.png" alt="cart" class="img-icon">
+                                                        <span class="cart-count">0</span>
+                                                    </a>
+                                                </li>
+                                                <li class="nav-item user-icon">
+                                                    <?php if (is_user_logged_in()) :
+                                                        $current_user = wp_get_current_user();
+                                                    ?>
+                                                        <a class="nav-link logged-in">
+                                                            <?= $current_user->display_name; ?>
+                                                        </a>
+
+                                                        <ul class="sub-menu logout">
+                                                            <li>
+                                                                <a href="<?= site_url(); ?>/my-account">My Account</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="<?php echo wp_logout_url(home_url()); ?>">Logout</a>
+                                                            </li>
+                                                        </ul>
+                                                    <?php else : ?>
+                                                        <a class="nav-link" href="<?= site_url(); ?>/my-account">
+                                                            <img src="<?= get_template_directory_uri(); ?>/assets/images/icon_user.png" alt="cart" class="img-icon">
+                                                        </a>
+                                                    <?php endif; ?>
+                                                </li>
                                             </div>
                                         </div>
                                     </nav>

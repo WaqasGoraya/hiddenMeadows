@@ -1038,6 +1038,11 @@ body {
     url("../images/cart_banner.png") center center no-repeat;
   background-size: cover;
 }
+.checkout-bg {
+  background: linear-gradient(rgba(43, 43, 43, 0.3), rgba(43, 43, 43, 0.3)),
+    url("../images/cart_banner.png") center center no-repeat;
+  background-size: cover;
+}
 
 .product-detail-bg {
   background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(43, 43, 43, 0.5)),
