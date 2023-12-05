@@ -1,4 +1,5 @@
-<?php 
+<?php
+
 /**
 
  * Lost password shortcode
@@ -24,6 +25,20 @@ function custom_reset_password_form($atts)
 
 {
     return wc_get_template('myaccount/form-reset-password.php', array('form' => 'form-reset-password'));
+}
+
+
+add_shortcode('empty_cart_custom', 'empty_cart');
+/**
+
+ * Empty cart shortcode
+
+ */
+
+function empty_cart($atts)
+
+{
+    return wc_get_template('cart/cart-empty.php');
 }
 
 add_shortcode('woocommerce_custom_my_account', 'custom_my_account');
@@ -147,7 +162,26 @@ function redirect_if_user_not_logged_in()
     }
 }
 
+function wc_redirect()
+{
 
+    if (
+
+        !is_user_logged_in()
+
+        && (is_woocommerce() || is_cart() || is_checkout())
+
+    ) {
+
+        // feel free to customize the following line to suit your needs
+
+        wp_redirect(home_url() . '/login');
+
+        exit;
+    }
+}
+
+add_action('template_redirect', 'wc_redirect');
 
 add_action('wp_logout', 'auto_redirect_after_logout');
 
