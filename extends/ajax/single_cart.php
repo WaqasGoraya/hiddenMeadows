@@ -31,9 +31,11 @@ function add_to_cart()
     $redirect = site_url() . '/cart';
     $response = '';
     if ($added) {
+        $total =  WC()->cart->get_cart_contents_count(); 
         $response = [
             "data" => true,
-            "url" => $redirect
+            "url" => $redirect,
+            "cart_count" => $total
         ];
     } else {
         $response = '';

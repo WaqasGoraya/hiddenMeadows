@@ -153,7 +153,6 @@ jQuery("#single_cart").on("click", function () {
         jQuery(".loader").css("visibility", "hidden");
       },
       success: function (res) {
-        console.log(res);
         if (res.data == true) {
           swal.fire("Great!", "Product Added to Cart Successfully", "success");
           window.location.href = res.url;
@@ -182,7 +181,6 @@ jQuery(document).on("click", "#cart_one", function () {
       jQuery(".loader").css("visibility", "hidden");
     },
     success: function (res) {
-      console.log(res);
       if (res.data == true) {
         Swal.fire({
           icon: "success",
@@ -192,15 +190,13 @@ jQuery(document).on("click", "#cart_one", function () {
           confirmButtonText: "Continue Shopping!",
           footer: `<a href="${res.url}">Go To Cart </a>`,
         });
+
+        jQuery(".cart-count").html(res.cart_count);
       } else {
         swal.fire("Sorry!", "Something went wrong", "error");
       }
     },
   });
-});
-//Remove Cart Item
-jQuery(document).on("click", "#cart_remove", function () {
-  alert("cart");
 });
 // products page search args
 function setAttr(arg) {
