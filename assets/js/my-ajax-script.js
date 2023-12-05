@@ -202,3 +202,71 @@ jQuery(document).on("click", "#cart_one", function () {
 function setAttr(arg) {
   jQuery("#search_cat").val(arg);
 }
+
+
+jQuery(document).on('click', '#update_cart', function () {
+
+  setTimeout(() => {
+    jQuery.ajax({
+      type: "POST",
+      url: my_ajax_object.ajaxurl,
+      dataType: "json",
+      data: {
+        action: "update_cart",
+      },
+      beforeSend: function () {
+        jQuery(".loader").css("visibility", "visible");
+      },
+      complete: function () {
+        jQuery(".loader").css("visibility", "hidden");
+      },
+      success: function (res) {
+        if (res.data == true) {
+          Swal.fire({
+            icon: "success",
+            title: "Great",
+            text: "Cart Updated Successfully!",
+          });
+          jQuery(".cart-count").html(res.cart_count);
+        } else {
+          swal.fire("Sorry!", "Something went wrong", "error");
+        }
+      },
+    });
+  }, 1000);
+
+});
+
+
+jQuery(document).on('click', '#remove_product', function () {
+
+  setTimeout(() => {
+    jQuery.ajax({
+      type: "POST",
+      url: my_ajax_object.ajaxurl,
+      dataType: "json",
+      data: {
+        action: "update_cart",
+      },
+      beforeSend: function () {
+        jQuery(".loader").css("visibility", "visible");
+      },
+      complete: function () {
+        jQuery(".loader").css("visibility", "hidden");
+      },
+      success: function (res) {
+        if (res.data == true) {
+          Swal.fire({
+            icon: "success",
+            title: "Great",
+            text: "Product removed Successfully!",
+          });
+          jQuery(".cart-count").html(res.cart_count);
+        } else {
+          swal.fire("Sorry!", "Something went wrong", "error");
+        }
+      },
+    });
+  }, 1000);
+
+});
