@@ -43,3 +43,18 @@ function add_to_cart()
     echo json_encode($response);
     die();
 }
+
+
+// add to cart 
+add_action('wp_ajax_update_cart', 'update_cart');
+add_action('wp_ajax_nopriv_update_cart', 'update_cart');
+function update_cart()
+{
+    $total =  WC()->cart->get_cart_contents_count();
+    $response = [
+        "data" => true,
+        "cart_count" => $total
+    ];
+    echo json_encode($response);
+    die();
+}

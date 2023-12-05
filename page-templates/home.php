@@ -31,6 +31,16 @@ $params = array(
     'order' => 'DESC',
 );
 $products = new WP_Query($params);
+
+// Testimonials
+$params = array(
+    'posts_per_page' => 5,
+    'post_type' => 'ourtestimonial',
+    'post_status' => 'publish',
+    'orderby' => 'date',
+    'order' => 'DESC',
+);
+$testimonials = new WP_Query($params);
 ?>
 <!--------------------------- our wine Section Start ----------------------------->
 <section class="section-products pt-3 pb-5">
@@ -144,7 +154,33 @@ $products = new WP_Query($params);
             <div class="col-lg-6 col-lg-pos">
                 <div class="swiper testimonialSwiper">
                     <div class="swiper-wrapper">
+                    <?php if ($testimonials->have_posts()) : ?>
+                        <?php foreach ($testimonials->posts as $key => $testimonial) :
+                            $testimonial_img = wp_get_attachment_url(get_post_thumbnail_id($testimonial->ID));
+
+                            $testimonial_meta = get_post_meta($testimonial->ID);
+
+
+                                // print_r($testimonial_meta);
+                                // die();
+                        ?>
                         <div class="swiper-slide">
+                            <div class="card">
+                                <div class="card-body">
+                                    <img src="<?= $testimonial_img ?>" alt="client" class="img-client">
+                                    <h3 class="card-title"><?= $testimonial->post_title ?></h3>
+                                    <p class="card-subtitle">Customer</p>
+                                    <p class="card-text"><?= $testimonial->post_excerpt?></p>
+
+                                  <?php for ($i=1; $i <= $testimonial_meta['stars'][0] ; $i++): ?>
+                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/stars.svg" alt="stars" class="img-stars">
+                                   <?php endfor; ?> 
+                                </div>
+                            </div>
+                        </div>
+                        <?php endforeach;
+                         endif; ?>
+                        <!-- <div class="swiper-slide">
                             <div class="card">
                                 <div class="card-body">
                                     <img src="<?= get_template_directory_uri(); ?>/assets/images/client.png" alt="client" class="img-client">
@@ -154,18 +190,7 @@ $products = new WP_Query($params);
                                     <img src="<?= get_template_directory_uri(); ?>/assets/images/stars.svg" alt="stars" class="img-stars">
                                 </div>
                             </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/client.png" alt="client" class="img-client">
-                                    <h3 class="card-title">Jonathon Doe</h3>
-                                    <p class="card-subtitle">Customer</p>
-                                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tell us luctus nec ullamcorper mattis, pulvinar dapibus leo.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tell us luctus nec.</p>
-                                    <img src="<?= get_template_directory_uri(); ?>/assets/images/stars.svg" alt="stars" class="img-stars">
-                                </div>
-                            </div>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="swiper-button-prev">
                         <img src="<?= get_template_directory_uri(); ?>/assets/images/previous-img.png" alt="" class="img-arrow">

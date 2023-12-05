@@ -77,6 +77,7 @@ do_action('woocommerce_before_cart'); ?>
 				<?php do_action('woocommerce_before_cart_contents'); ?>
 
 				<?php
+
 				foreach (WC()->cart->get_cart() as $cart_item_key => $cart_item) {
 					$_product   = apply_filters('woocommerce_cart_item_product', $cart_item['data'], $cart_item, $cart_item_key);
 					$product_id = apply_filters('woocommerce_cart_item_product_id', $cart_item['product_id'], $cart_item, $cart_item_key);
@@ -174,7 +175,7 @@ do_action('woocommerce_before_cart'); ?>
 								echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 									'woocommerce_cart_item_remove_link',
 									sprintf(
-										'<a href="%s" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><img src="' . get_template_directory_uri() . '/assets/images/icon_trash.png"></a>',
+										'<a href="%s" id="remove_product" class="remove" aria-label="%s" data-product_id="%s" data-product_sku="%s"><img src="' . get_template_directory_uri() . '/assets/images/icon_trash.png"></a>',
 										esc_url(wc_get_cart_remove_url($cart_item_key)),
 										/* translators: %s is the product name */
 										esc_attr(sprintf(__('Remove %s from cart', 'woocommerce'), wp_strip_all_tags($product_name))),
@@ -203,7 +204,7 @@ do_action('woocommerce_before_cart'); ?>
 						</div> -->
 						<?php } ?>
 
-						<button type="submit" class="button<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" name="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
+						<button type="submit" class="button<?php echo esc_attr(wc_wp_theme_get_element_class_name('button') ? ' ' . wc_wp_theme_get_element_class_name('button') : ''); ?>" name="update_cart" id="update_cart" value="<?php esc_attr_e('Update cart', 'woocommerce'); ?>"><?php esc_html_e('Update cart', 'woocommerce'); ?></button>
 
 						<?php do_action('woocommerce_cart_actions'); ?>
 

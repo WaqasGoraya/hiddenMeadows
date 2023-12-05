@@ -209,3 +209,75 @@ add_action('init', 'blog_posts');
 // }
 
 // add_action('init', 'bottom_slider_posts');
+
+
+// Testimonial custom post
+
+function testimonials_post()
+
+{
+
+    $labels = array(
+
+        'name' => __('Testimonials'),
+
+        'singular_name' => __('Testimonial'),
+
+        'all_items'           => __('All Testimonials'),
+
+        'view_item'           => __('View Testimonial'),
+
+        'add_new_item'        => __('Add New Testimonial'),
+
+        'add_new'             => __('Add New Testimonial'),
+
+        'edit_item'           => __('Edit Testimonial'),
+
+        'update_item'         => __('Update Testimonial'),
+
+        'search_items'        => __('Search Testimonial'),
+
+        'not_found' => __('No Testimonial found'),
+
+        'search_items' => __('Testimonial')
+
+    );
+
+
+
+    $args = array(
+
+
+
+        'labels' => $labels,
+
+        'description' => 'Add  Testimonials contents',
+
+        'menu_position' => 27,
+
+        'public' => true,
+
+        'has_archive' => true,
+
+        'map_meta_cap' => true,
+
+        'capability_type' => 'post',
+
+        'hierarchical' => true,
+
+        'rewrite' => array('slug' => false),
+
+        'menu_icon' => 'dashicons-testimonial',
+
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'revisions'),
+
+        // 'taxonomies' => array('category'),
+
+    );
+
+
+
+    register_post_type('ourtestimonial', $args);
+}
+
+add_action('init', 'testimonials_post');
