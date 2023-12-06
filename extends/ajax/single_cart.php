@@ -28,10 +28,11 @@ function add_to_cart()
 {
     $product = $_POST['product'];
     $added = WC()->cart->add_to_cart($product);
+    $total =  WC()->cart->get_cart_contents_count();
+
     $redirect = site_url() . '/cart';
     $response = '';
     if ($added) {
-        $total =  WC()->cart->get_cart_contents_count(); 
         $response = [
             "data" => true,
             "url" => $redirect,
@@ -51,9 +52,12 @@ add_action('wp_ajax_nopriv_update_cart', 'update_cart');
 function update_cart()
 {
     $total =  WC()->cart->get_cart_contents_count();
+    $url = site_url() . '/cart';
+
     $response = [
         "data" => true,
-        "cart_count" => $total
+        "cart_count" => $total,
+        "url" => $url
     ];
     echo json_encode($response);
     die();

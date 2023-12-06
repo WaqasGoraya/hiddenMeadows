@@ -203,9 +203,7 @@ function setAttr(arg) {
   jQuery("#search_cat").val(arg);
 }
 
-
-jQuery(document).on('click', '#update_cart', function () {
-
+jQuery(document).on("click", "#update_cart", function () {
   setTimeout(() => {
     jQuery.ajax({
       type: "POST",
@@ -233,13 +231,10 @@ jQuery(document).on('click', '#update_cart', function () {
         }
       },
     });
-  }, 1000);
-
+  }, 2000);
 });
 
-
-jQuery(document).on('click', '#remove_product', function () {
-
+jQuery(document).on("click", "#remove_product", function () {
   setTimeout(() => {
     jQuery.ajax({
       type: "POST",
@@ -262,11 +257,13 @@ jQuery(document).on('click', '#remove_product', function () {
             text: "Product removed Successfully!",
           });
           jQuery(".cart-count").html(res.cart_count);
+          if(res.cart_count == 0){
+            window.location.href = res.url;
+          }
         } else {
           swal.fire("Sorry!", "Something went wrong", "error");
         }
       },
     });
-  }, 1000);
-
+  }, 2000);
 });
