@@ -101,9 +101,9 @@ $sprwine = new WP_Query($sprparams);
                 </nav>
                 <h2 class="filter-title">all wines</h2>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
-                    <form  id="searchFrom">
+                    <form id="searchFrom">
                         <div class="input-group">
-                            <input type="hidden" id="search_cat"  name="search_cat" value="all">
+                            <input type="hidden" id="search_cat" name="search_cat" value="all">
                             <input type="text" name="search" id="search" class="form-control" placeholder="Search" data-cat="" required>
                             <button type="submit" class="btn btn-search">
                                 <i class="fa fa-search"></i>
@@ -127,7 +127,7 @@ $sprwine = new WP_Query($sprparams);
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
                                             <div class="img-box" data-id="<?= $product->ID; ?>">
-                                            <?php cart_login_check(); ?>
+                                                <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -142,19 +142,19 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach; ?>
+                                <?php endforeach; ?>
                             <?php else : ?>
 
-                             <h3 class="card-title">No products found!</h3>
+                                <h3 class="card-title">No products found!</h3>
 
                             <?php endif; ?>
                         </div>
                         <?php if ($p_count->publish > 8) : ?>
-                        <div class="row">
-                            <div class="col text-center mt-5">
-                                <button id="load_more_products" class="btn btn-view">view more</button>
+                            <div class="row">
+                                <div class="col text-center mt-5">
+                                    <button id="load_more_products" class="btn btn-view">view more</button>
+                                </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                     </div>
                     <div class="tab-pane fade" id="nav-red" role="tabpanel" aria-labelledby="nav-red-tab">
@@ -171,7 +171,7 @@ $sprwine = new WP_Query($sprparams);
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
                                             <div class="img-box" data-id="<?= $product->ID; ?>">
-                                           <?php cart_login_check(); ?>
+                                                <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img; ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -186,19 +186,19 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;?>
-                                  <?php else : ?>
+                                <?php endforeach; ?>
+                            <?php else : ?>
 
-                             <h3 class="card-title">No products found!</h3>
+                                <h3 class="card-title">No products found!</h3>
 
                             <?php endif; ?>
                         </div>
-                           <?php if ($redwine->found_posts > 8) : ?>
-                        <div class="row">
-                            <div class="col text-center mt-5">
-                                <button class="btn btn-view" id="load_more_redwine">view more</button>
+                        <?php if ($redwine->found_posts > 8) : ?>
+                            <div class="row">
+                                <div class="col text-center mt-5">
+                                    <button class="btn btn-view" id="load_more_redwine">view more</button>
+                                </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                     </div>
                     <div class="tab-pane fade" id="nav-rose" role="tabpanel" aria-labelledby="nav-rose-tab">
@@ -215,7 +215,7 @@ $sprwine = new WP_Query($sprparams);
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
                                             <div class="img-box" data-id="<?= $product->ID; ?>">
-                                              <?php cart_login_check(); ?>
+                                                <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -230,19 +230,19 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;?>
-                                  <?php else : ?>
+                                <?php endforeach; ?>
+                            <?php else : ?>
 
-                             <h3 class="card-title">No products found!</h3>
+                                <h3 class="card-title">No products found!</h3>
 
                             <?php endif; ?>
                         </div>
                         <?php if ($rosewine->found_posts > 8) : ?>
-                        <div class="row">
-                            <div class="col text-center mt-5">
-                                <button class="btn btn-view" id="load_more_rosewine">view more</button>
+                            <div class="row">
+                                <div class="col text-center mt-5">
+                                    <button class="btn btn-view" id="load_more_rosewine">view more</button>
+                                </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                     </div>
                     <div class="tab-pane fade" id="nav-white" role="tabpanel" aria-labelledby="nav-white-tab">
@@ -259,7 +259,7 @@ $sprwine = new WP_Query($sprparams);
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
                                             <div class="img-box" data-id="<?= $product->ID; ?>">
-                                          <?php cart_login_check(); ?>
+                                                <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -274,19 +274,19 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;?>
-                                  <?php else : ?>
+                                <?php endforeach; ?>
+                            <?php else : ?>
 
-                             <h3 class="card-title">No products found!</h3>
+                                <h3 class="card-title">No products found!</h3>
 
                             <?php endif; ?>
                         </div>
                         <?php if ($whitewine->found_posts > 8) : ?>
-                        <div class="row">
-                            <div class="col text-center mt-5">
-                                <button class="btn btn-view" id="load_more_whitewine">view more</button>
+                            <div class="row">
+                                <div class="col text-center mt-5">
+                                    <button class="btn btn-view" id="load_more_whitewine">view more</button>
+                                </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                     </div>
                     <div class="tab-pane fade" id="nav-sparkling" role="tabpanel" aria-labelledby="nav-sparkling-tab">
@@ -303,7 +303,7 @@ $sprwine = new WP_Query($sprparams);
                                     <div class="col-md-4 col-lg-3">
                                         <div class="card">
                                             <div class="img-box" data-id="<?= $product->ID; ?>">
-                                         <?php cart_login_check(); ?>
+                                                <?php cart_login_check(); ?>
                                                 <img src="<?= $product_img;  ?>" alt="product" class="card-img-top">
                                             </div>
                                             <a href="<?= get_permalink($product->ID) ?>">
@@ -318,32 +318,32 @@ $sprwine = new WP_Query($sprparams);
                                             </a>
                                         </div>
                                     </div>
-                            <?php endforeach;?>
-                                  <?php else : ?>
+                                <?php endforeach; ?>
+                            <?php else : ?>
 
-                             <h3 class="card-title">No products found!</h3>
+                                <h3 class="card-title">No products found!</h3>
 
                             <?php endif; ?>
                         </div>
-                    <?php if ($sprwine->found_posts > 8) : ?>
-                        <div class="row">
-                            <div class="col text-center mt-5">
-                                <button class="btn btn-view" id="load_more_sprwine">view more</button>
+                        <?php if ($sprwine->found_posts > 8) : ?>
+                            <div class="row">
+                                <div class="col text-center mt-5">
+                                    <button class="btn btn-view" id="load_more_sprwine">view more</button>
+                                </div>
                             </div>
-                        </div>
                         <?php endif; ?>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-          <div class="loader">
-        <?xml version="1.0" encoding="utf-8"?>
+    <div class="loader">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="144px" height="144px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-        <circle cx="50" cy="50" r="28" stroke-width="7" stroke="#912623" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
-        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
-        </circle>
-        <!-- [ldio] generated by https://loading.io/ --></svg>
+            <circle cx="50" cy="50" r="28" stroke-width="7" stroke="#912623" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+            </circle>
+            <!-- [ldio] generated by https://loading.io/ -->
+        </svg>
     </div>
 </section>
 <!-------------------------------- Products End ------------------------------------>
