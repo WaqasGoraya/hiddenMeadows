@@ -32,64 +32,64 @@ $count = wp_count_posts($post_type = 'ourblogs');
     </div>
     <!-- Blog-1 start -->
     <div id="blogs_list">
-    <?php if ($blogs_query->have_posts()) : ?>
+        <?php if ($blogs_query->have_posts()) : ?>
 
-        <?php foreach ($blogs_query->posts as $key => $blog) :
+            <?php foreach ($blogs_query->posts as $key => $blog) :
 
-            $blog_img = wp_get_attachment_url(get_post_thumbnail_id($blog->ID));
+                $blog_img = wp_get_attachment_url(get_post_thumbnail_id($blog->ID));
 
-            $blog_meta = get_post_meta($blog->ID);
+                $blog_meta = get_post_meta($blog->ID);
 
-        ?>
-            <div class="blog-1">
-                <div class="container">
-                    <div class="blog-content">
-                        <div class="row">
-                            <?php if ($key + 1 & 1) : ?>
+            ?>
+                <div class="blog-1">
+                    <div class="container">
+                        <div class="blog-content">
+                            <div class="row">
+                                <?php if ($key + 1 & 1) : ?>
 
-                                <div class="col-12 col-lg-6">
-                                    <img class="img-fluid blog-img" src="<?= $blog_img; ?>" alt="blog-image">
-                                </div>
-                                <div class="col-12 col-lg-6">
-                                    <div class="blog-text">
-                                        <div class="up-text">
-                                            <span> <?php the_author_meta('display_name', $blog->post_author); ?> . <?= get_the_date("d.m.Y", $blog->ID); ?></span>
-                                        </div>
-                                        <h3><?= $blog->post_title; ?></h3>
-                                        <p><?= $blog->post_excerpt; ?></p>
-                                        <div>
-                                            <a href="<?= get_permalink($blog->ID); ?>" class="blog-btn">Read More</a>
+                                    <div class="col-12 col-lg-6">
+                                        <img class="img-fluid blog-img" src="<?= $blog_img; ?>" alt="blog-image">
+                                    </div>
+                                    <div class="col-12 col-lg-6">
+                                        <div class="blog-text">
+                                            <div class="up-text">
+                                                <span> <?php the_author_meta('display_name', $blog->post_author); ?> . <?= get_the_date("d.m.Y", $blog->ID); ?></span>
+                                            </div>
+                                            <h3><?= $blog->post_title; ?></h3>
+                                            <p><?= $blog->post_excerpt; ?></p>
+                                            <div>
+                                                <a href="<?= get_permalink($blog->ID); ?>" class="blog-btn">Read More</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            <?php else : ?>
-                                <div class="col-12 col-lg-6 order-2 order-lg-1">
-                                    <div class="blog-text">
-                                        <div class="up-text">
-                                            <span> <?php the_author_meta('display_name', $blog->post_author); ?> . <?= get_the_date("d.m.Y", $blog->ID); ?></span>
-                                        </div>
-                                        <h3><?= $blog->post_title; ?></h3>
-                                        <p><?= $blog->post_excerpt; ?></p>
-                                        <div>
-                                            <a href="<?= get_permalink($blog->ID); ?>" class="blog-btn">Read More</a>
+                                <?php else : ?>
+                                    <div class="col-12 col-lg-6 order-2 order-lg-1">
+                                        <div class="blog-text">
+                                            <div class="up-text">
+                                                <span> <?php the_author_meta('display_name', $blog->post_author); ?> . <?= get_the_date("d.m.Y", $blog->ID); ?></span>
+                                            </div>
+                                            <h3><?= $blog->post_title; ?></h3>
+                                            <p><?= $blog->post_excerpt; ?></p>
+                                            <div>
+                                                <a href="<?= get_permalink($blog->ID); ?>" class="blog-btn">Read More</a>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-12 col-lg-6 order-1 order-lg-2">
-                                    <img class="img-fluid blog-img" src="<?= $blog_img; ?>" alt="blog-image">
-                                </div>
+                                    <div class="col-12 col-lg-6 order-1 order-lg-2">
+                                        <img class="img-fluid blog-img" src="<?= $blog_img; ?>" alt="blog-image">
+                                    </div>
 
 
-                            <?php endif; ?>
+                                <?php endif; ?>
+                            </div>
+
                         </div>
-
                     </div>
                 </div>
-            </div>
-            <!-- Blog-1 End -->
+                <!-- Blog-1 End -->
 
-    <?php endforeach;
-    endif; ?>
+        <?php endforeach;
+        endif; ?>
     </div>
     <?php if ($count->publish > 3) : ?>
         <div class="text-center mt-4 mb-4">
@@ -98,13 +98,13 @@ $count = wp_count_posts($post_type = 'ourblogs');
             </button>
         </div>
     <?php endif; ?>
-   <div class="loader">
-        <?xml version="1.0" encoding="utf-8"?>
+    <div class="loader">
         <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" style="margin: auto; background: transparent; display: block; shape-rendering: auto;" width="144px" height="144px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-        <circle cx="50" cy="50" r="28" stroke-width="7" stroke="#912623" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
-        <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
-        </circle>
-        <!-- [ldio] generated by https://loading.io/ --></svg>
+            <circle cx="50" cy="50" r="28" stroke-width="7" stroke="#912623" stroke-dasharray="43.982297150257104 43.982297150257104" fill="none" stroke-linecap="round">
+                <animateTransform attributeName="transform" type="rotate" repeatCount="indefinite" dur="1.4492753623188404s" keyTimes="0;1" values="0 50 50;360 50 50"></animateTransform>
+            </circle>
+            <!-- [ldio] generated by https://loading.io/ -->
+        </svg>
     </div>
 </section>
 
