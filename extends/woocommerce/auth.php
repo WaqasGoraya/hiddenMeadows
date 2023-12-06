@@ -27,20 +27,6 @@ function custom_reset_password_form($atts)
     return wc_get_template('myaccount/form-reset-password.php', array('form' => 'form-reset-password'));
 }
 
-
-add_shortcode('empty_cart_custom', 'empty_cart');
-/**
-
- * Empty cart shortcode
-
- */
-
-function empty_cart($atts)
-
-{
-    return wc_get_template('cart/cart-empty.php');
-}
-
 add_shortcode('woocommerce_custom_my_account', 'custom_my_account');
 
 /**
@@ -169,7 +155,7 @@ function wc_redirect()
 
         !is_user_logged_in()
 
-        && (is_woocommerce() || is_cart() || is_checkout())
+        && (is_checkout())
 
     ) {
 
