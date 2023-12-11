@@ -202,7 +202,7 @@
              <div class="row login-box-pos mb-5 mb-md-0">
                  <div class="col-md-7 text-center mx-auto flex-xxl-grow-1">
                      <div class="login-box">
-                         <h2 class="box-title">Forgot Password</h2>
+                         <h2 class="box-title"><?php the_title();  ?></h2>
                          <?= do_shortcode('[woocommerce_lost_password]'); ?>
                          <img src="<?= get_template_directory_uri(); ?>/assets/images/wine-1.png" alt="wine" class="img-wine">
                      </div>
@@ -261,7 +261,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title">product</h1>
-                     <p class="banner-text"><?php echo $args['excrept']; ?>/p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
