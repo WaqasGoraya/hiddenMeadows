@@ -131,6 +131,22 @@ $excrept = '';
         background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
             url("<?php echo $img; ?>") center center no-repeat;
     }
+    <?php elseif (is_page('forgot-password')) :
+        $data = post_data('auth');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.my-account-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+    <?php elseif (is_page('reset-password')) :
+        $data = post_data('auth');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.my-account-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
 
     <?php elseif (is_product()) :
         $data = post_data('prdouctdetail');
@@ -162,8 +178,23 @@ $excrept = '';
                             <div class="container">
                                 <div class="top-bar">
                                     <div class="row align-items-center">
+                                        <div class="col-md-4 col-lg-6">
+                                            <div class="top-social-links">
+                                                <div class="d-flex gap-10">
+                                                    <?php if (is_active_sidebar('header-top')) : ?>
+                                                        <?php dynamic_sidebar('header-top-3'); ?>
+                                                    <?php else : ?>
+                                                        <a href="#"><i class="fa fa-facebook"></i></a>
+                                                        <a href="#"><i class="fa fa-instagram"></i></a>
+                                                        <a href="#"><i class="fa fa-twitter"></i></a>
+                                                        <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                                    <?php endif; ?>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="col-md-8 col-lg-6">
-                                            <div class="d-flex gap-5">
+
+                                            <div class="d-flex justify-content-end gap-5">
                                                 <div>
                                                     <div class="icon">
                                                         <?php if (is_active_sidebar('header-top')) : ?>
@@ -183,20 +214,6 @@ $excrept = '';
                                                             <b><a href="#">+1 324 657 897</a></b>
                                                         <?php endif; ?>
                                                     </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4 col-lg-6">
-                                            <div class="top-social-links">
-                                                <div class="d-flex justify-content-end gap-10">
-                                                    <?php if (is_active_sidebar('header-top')) : ?>
-                                                        <?php dynamic_sidebar('header-top-3'); ?>
-                                                    <?php else : ?>
-                                                        <a href="#"><i class="fa fa-facebook"></i></a>
-                                                        <a href="#"><i class="fa fa-instagram"></i></a>
-                                                        <a href="#"><i class="fa fa-twitter"></i></a>
-                                                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                                    <?php endif; ?>
                                                 </div>
                                             </div>
                                         </div>
