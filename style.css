@@ -235,9 +235,7 @@ Use it to make something cool, have fun, and share what you've learned with othe
   object-fit: cover;
 }
 .error {
-  color: white;
-  padding: 1px 1px;
-  background-color: #631a1c;
+  color: red;
 }
 
 .loader {
@@ -547,12 +545,15 @@ Use it to make something cool, have fun, and share what you've learned with othe
   color: #fff;
 }
 /* Order Received  */
-.woocommerce-order .woocommerce-Price-amount.amount, 
+.woocommerce-order .woocommerce-Price-amount.amount,
 .woocommerce-order-details .woocommerce-Price-amount.amount,
-.woocommerce-MyAccount-content .woocommerce-Price-amount.amount{
+.woocommerce-MyAccount-content .woocommerce-Price-amount.amount {
   background: none;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   padding: 0;
+}
+.header-text {
+  max-width: 50%;
 }

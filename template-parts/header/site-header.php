@@ -2,7 +2,147 @@
 global $post;
 $slug = $post->post_name;
 $cart = WC()->cart->get_cart_contents_count();
+$excrept = '';
 ?>
+<style>
+    <?php if (is_page('home')) :
+        $data = post_data('home');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+
+    ?>.header-main-sec-bg {
+
+        background: url("<?php echo $img; ?>") center no-repeat;
+    }
+
+    <?php elseif (is_product_category()) :
+        $data = post_data('products');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.products-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(43, 43, 43, 0.5)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_singular('ourproducer')) :
+        $data = post_data('producers');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.single-producer-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.3), rgba(43, 43, 43, 0.3)),
+            url("../images/producer_banner.png") center center no-repeat;
+    }
+
+    <?php elseif (is_singular('ourblogs')) :
+        $data = post_data('blog');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.single-blog-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
+            url("../images/single-blog-bg.png") center no-repeat;
+    }
+
+    <?php elseif (is_page('about')) :
+        $data = post_data('about');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+
+    ?>.about-bg {
+        background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_page('products')) :
+        $data = post_data('products');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.products-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(43, 43, 43, 0.5)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_page('producers')) :
+        $data = post_data('producers');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.producers-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.3), rgba(43, 43, 43, 0.3)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_page('blog')) :
+        $data = post_data('blog');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.blog-bg {
+        background: url("<?php echo $img; ?>") center no-repeat;
+    }
+
+    <?php elseif (is_page('contact')) :
+        $data = post_data('contact');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.contact-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_page('cart')) :
+        $data = post_data('cart');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.cart-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.3), rgba(43, 43, 43, 0.3)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_page('checkout')) :
+        $data = post_data('checkout');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.checkout-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.3), rgba(43, 43, 43, 0.3)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_page('login')) :
+        $data = post_data('auth');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.login-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_page('register')) :
+        $data = post_data('auth');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.register-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_page('my-account')) :
+        $data = post_data('auth');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.my-account-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.4), rgba(43, 43, 43, 0.4)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php elseif (is_product()) :
+        $data = post_data('prdouctdetail');
+        $img = $data['img'];
+        $excrept = $data['excrept'];
+    ?>.product-detail-bg {
+        background: linear-gradient(rgba(43, 43, 43, 0.5), rgba(43, 43, 43, 0.5)),
+            url("<?php echo $img; ?>") center center no-repeat;
+    }
+
+    <?php endif; ?>
+</style>
 
 <body>
     <!-------------------------------- header Start ---------------------------------->
@@ -113,7 +253,13 @@ $cart = WC()->cart->get_cart_contents_count();
                                         </div>
                                     </nav>
                                 </div>
-                                <?php get_template_part('template-parts/header/bread-crumb'); ?>
+                                <?php get_template_part(
+                                    'template-parts/header/bread-crumb',
+                                    null,
+                                    array(
+                                        'excrept' => $excrept,
+                                    )
+                                ); ?>
                             </div>
                             </header>
                             <!-------------------------------- header End ------------------------------------>

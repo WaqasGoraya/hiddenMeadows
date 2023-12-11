@@ -4,10 +4,8 @@
                  <div class="col-md-7 flex-grow-1">
                      <div class="header-heading text-white py-90 py-lg-0">
                          <p class="change-color">Enhance Your Experience with</p>
-                         <h1>Hidden Meadows</h1>
-                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting <br> industry. Lorem Ipsum
-                             has
-                             been the industry's standard dummy text ever.</p>
+                         <h1><?php echo get_bloginfo('name'); ?></h1>
+                         <p class="header-text"><?php echo $args['excrept']; ?></p>
                          <div class="heading-btn mt-4 mb-3">
                              <a href="<?= site_url(); ?>/products" class="header-link">Shop Now</a>
                          </div>
@@ -20,7 +18,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -35,7 +33,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -51,9 +49,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the
-                         readable content of a page
-                         hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -69,9 +65,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title">Blog</h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the
-                         readable content of a page
-                         hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -88,7 +82,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -103,7 +97,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -118,7 +112,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -133,10 +127,8 @@
              <!-- single producer breadcrumb start -->
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
-                     <h1 class="banner-title">Blog</h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the
-                         readable content of a page
-                         hen looking at its layout the point of using Lorem Ipsum</p>
+                     <h1 class="banner-title"><?php the_title(); ?></h1>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -152,7 +144,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -168,7 +160,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -253,7 +245,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title"><?php the_title(); ?></h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?></p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="<?php echo esc_url(home_url('/')); ?>">Home</a></li>
@@ -269,7 +261,7 @@
              <div class="row row-pos-inner">
                  <div class="col-md-8 text-center mx-auto flex-xl-grow-1">
                      <h1 class="banner-title">product</h1>
-                     <p class="banner-text">It is a long established fact that a reader will be distracted by the readable content of a page hen looking at its layout the point of using Lorem Ipsum</p>
+                     <p class="banner-text"><?php echo $args['excrept']; ?>/p>
                      <nav aria-label="breadcrumb">
                          <ol class="breadcrumb justify-content-center">
                              <li class="breadcrumb-item"><a href="index.html">Home</a></li>
