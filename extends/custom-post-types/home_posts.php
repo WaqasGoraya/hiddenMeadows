@@ -281,3 +281,73 @@ function testimonials_post()
 }
 
 add_action('init', 'testimonials_post');
+
+// Site Setting custom post
+function sitesettings_post()
+
+{
+
+    $labels = array(
+
+        'name' => __('Site Settings'),
+
+        'singular_name' => __('Site Setting'),
+
+        'all_items'           => __('All Site Settings'),
+
+        'view_item'           => __('View Site Setting'),
+
+        'add_new_item'        => __('Add New Site Setting'),
+
+        'add_new'             => __('Add New Site Setting'),
+
+        'edit_item'           => __('Edit Site Setting'),
+
+        'update_item'         => __('Update Site Setting'),
+
+        'search_items'        => __('Search Site Setting'),
+
+        'not_found' => __('No Site Setting found'),
+
+        'search_items' => __('Site Setting')
+
+    );
+
+
+
+    $args = array(
+
+
+
+        'labels' => $labels,
+
+        'description' => 'Add Site Setting contents',
+
+        'menu_position' => 27,
+
+        'public' => true,
+
+        'has_archive' => true,
+
+        'map_meta_cap' => true,
+
+        'capability_type' => 'post',
+
+        'hierarchical' => true,
+
+        'rewrite' => array('slug' => false),
+
+        'menu_icon' => 'dashicons-admin-generic',
+
+        'supports' => array('title', 'editor', 'excerpt', 'thumbnail', 'custom-fields', 'revisions'),
+
+        'taxonomies' => array('category'),
+
+    );
+
+
+
+    register_post_type('sitesettings', $args);
+}
+
+add_action('init', 'sitesettings_post');

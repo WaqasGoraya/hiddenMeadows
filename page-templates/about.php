@@ -3,6 +3,10 @@
 // Template Name: About
 
 get_header();
+
+// echo "<pre>";
+// print_r($blogs_query->posts[0]->post_excerpt);
+// exit;
 global $post;
 ?>
 <!-------------------------------- About Start ------------------------------------>

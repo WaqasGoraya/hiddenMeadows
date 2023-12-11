@@ -179,3 +179,5 @@ function auto_redirect_after_logout()
     wp_redirect(home_url());
     exit();
 }
+
+add_filter('woocommerce_cart_item_removed_notice_type', '__return_null');
